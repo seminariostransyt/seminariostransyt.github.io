@@ -48,6 +48,13 @@ Ejemplo:
 | `presentacion` | No | Enlace de SharePoint a las diapositivas |
 | `estado`       | No | `"aplazado"` o `"cancelado"` (el título aparece tachado) |
 
+## Añadir al calendario
+
+En los próximos seminarios, el botón **Añadir al calendario** (en el cartel) y **Calendario (.ics)**
+(en la tabla) descargan un archivo `.ics` que se abre con Outlook, Google Calendar o el
+calendario de Apple. Se genera solo con los datos de `seminarios.js`: fecha, hora, 50 minutos de
+duración, lugar, ponente, resumen y enlace online.
+
 ## Enlace de la llamada online
 
 Al principio de `seminarios.js`:

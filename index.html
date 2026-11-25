@@ -147,28 +147,75 @@
     const fechaLarga = d => `${d.getDate()} de ${MESES[d.getMonth()]} de ${d.getFullYear()}`;
     const mayus = t => t.charAt(0).toUpperCase() + t.slice(1);
 
-    function enlaceCalendario(s) {
+    // ---- Archivo .ics para añadir el seminario al calendario (Outlook, Google, Apple…) ----
+    function archivoICS(s) {
+      const CRLF = "\r\n";
+      const texto = t => String(t ?? "").replace(/\\/g, "\\\\").replace(/;/g, "\;").replace(/,/g, "\\,").replace(/\r?\n/g, "\\n");
+      const plegar = linea => {            // líneas de máx. 75 octetos (RFC 5545)
+        const bytes = new TextEncoder().encode(linea);
+        if (bytes.length <= 75) return linea;
+        const partes = []; let actual = "", tam = 0;
+        for (const ch of linea) {
+          const n = new TextEncoder().encode(ch).length;
+          if (tam + n > (partes.length ? 74 : 75)) { partes.push(actual); actual = ""; tam = 0; }
+          actual += ch; tam += n;
+        }
+        partes.push(actual);
+        return partes.join(CRLF + " ");
+      };
+      const dos = n => String(n).padStart(2, "0");
       const dia = s.fecha.replace(/-/g, "");
-      let dates;
+      const ahora = new Date();
+      const stamp = `${ahora.getUTCFullYear()}${dos(ahora.getUTCMonth()+1)}${dos(ahora.getUTCDate())}T${dos(ahora.getUTCHours())}${dos(ahora.getUTCMinutes())}${dos(ahora.getUTCSeconds())}Z`;
+
+      let inicio, fin;
       if (s.hora) {
         const [h, m] = s.hora.split(":").map(Number);
-        const fin = h * 60 + m + DURACION_MIN;
-        const hhmm = x => String(Math.floor(x/60)).padStart(2,"0") + String(x%60).padStart(2,"0");
-        dates = `${dia}T${hhmm(h*60+m)}00/${dia}T${hhmm(fin)}00`;
+        const f = h * 60 + m + DURACION_MIN;
+        inicio = `DTSTART;TZID=Europe/Madrid:${dia}T${dos(h)}${dos(m)}00`;
+        fin = `DTEND;TZID=Europe/Madrid:${dia}T${dos(Math.floor(f/60))}${dos(f%60)}00`;
       } else {
         const sig = parseFecha(s.fecha); sig.setDate(sig.getDate() + 1);
-        dates = `${dia}/${sig.getFullYear()}${String(sig.getMonth()+1).padStart(2,"0")}${String(sig.getDate()).padStart(2,"0")}`;
+        inicio = `DTSTART;VALUE=DATE:${dia}`;
+        fin = `DTEND;VALUE=DATE:${sig.getFullYear()}${dos(sig.getMonth()+1)}${dos(sig.getDate())}`;
       }
+
       const online = s.online || ENLACE_ONLINE;
-      const p = new URLSearchParams({
-        action: "TEMPLATE",
-        text: `Seminario TRANSyT: ${s.titulo}`,
-        dates,
-        ctz: "Europe/Madrid",
-        details: `${s.ponente}${s.afiliacion ? " (" + s.afiliacion + ")" : ""}${online ? "\n" + online : ""}`,
-        location: s.lugar || LUGAR_POR_DEFECTO,
-      });
-      return "https://calendar.google.com/calendar/render?" + p.toString();
+      const descripcion = [
+        `${s.ponente}${s.afiliacion ? " (" + s.afiliacion + ")" : ""}`,
+        s.resumen || "",
+        online ? "Enlace online: " + online : "",
+        "Ciclo de Seminarios TRANSyT: https://seminariostransyt.github.io",
+      ].filter(Boolean).join("\n\n");
+      const uid = `${dia}-${s.titulo.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").slice(0, 40)}@seminariostransyt.github.io`;
+
+      const lineas = [
+        "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//TRANSyT UPM//Ciclo de Seminarios//ES",
+        "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
+        "BEGIN:VTIMEZONE", "TZID:Europe/Madrid",
+        "BEGIN:DAYLIGHT", "TZOFFSETFROM:+0100", "TZOFFSETTO:+0200", "TZNAME:CEST",
+        "DTSTART:19700329T020000", "RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU", "END:DAYLIGHT",
+        "BEGIN:STANDARD", "TZOFFSETFROM:+0200", "TZOFFSETTO:+0100", "TZNAME:CET",
+        "DTSTART:19701025T030000", "RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU", "END:STANDARD",
+        "END:VTIMEZONE",
+        "BEGIN:VEVENT",
+        `UID:${uid}`, `DTSTAMP:${stamp}`, inicio, fin,
+        `SUMMARY:${texto("Seminario TRANSyT: " + s.titulo)}`,
+        `DESCRIPTION:${texto(descripcion)}`,
+        `LOCATION:${texto(s.lugar || LUGAR_POR_DEFECTO)}`,
+        ...(online ? [`URL:${online}`] : []),
+        "END:VEVENT", "END:VCALENDAR",
+      ];
+      const contenido = lineas.map(plegar).join(CRLF) + CRLF;
+      return {
+        href: "data:text/calendar;charset=utf-8," + encodeURIComponent(contenido),
+        nombre: `seminario-transyt-${s.fecha}.ics`,
+      };
+    }
+
+    function enlaceICS(s, etiqueta) {
+      const f = archivoICS(s);
+      return `<a href="${f.href}" download="${f.nombre}">${ico("calendarioMas")}${etiqueta}</a>`;
     }
 
     function fila(s, futuro) {
@@ -183,7 +230,7 @@
       const enlaces = [];
       if (!anulado) {
         if (futuro && (s.online || ENLACE_ONLINE)) enlaces.push(`<a href="${esc(s.online || ENLACE_ONLINE)}" target="_blank" rel="noopener">${ico("camara")}Unirse online</a>`);
-        if (futuro) enlaces.push(`<a href="${enlaceCalendario(s)}" target="_blank" rel="noopener">${ico("calendarioMas")}Calendario</a>`);
+        if (futuro) enlaces.push(enlaceICS(s, "Calendario (.ics)"));
         if (s.presentacion) enlaces.push(`<a href="${esc(s.presentacion)}" target="_blank" rel="noopener">${ico("diapositivas")}Diapositivas</a>`);
       }
 
@@ -226,7 +273,7 @@
         <p class="cartel-ponente">${ponente}${s.afiliacion ? `, ${esc(s.afiliacion)}` : ""}</p>
         <p class="cartel-lugar">${ico("lugar")}${esc(s.lugar || LUGAR_POR_DEFECTO)}</p>
         ${anulado ? "" : `<div class="cartel-acciones">
-          <a href="${enlaceCalendario(s)}" target="_blank" rel="noopener">${ico("calendarioMas")}Añadir al calendario</a>
+          ${enlaceICS(s, "Añadir al calendario")}
           ${online ? `<a href="${esc(online)}" target="_blank" rel="noopener">${ico("camara")}Unirse online</a>` : ""}
         </div>`}`;
     }

@@ -95,6 +95,10 @@ Reglas para los datos:
 - **Tipografía:** Figtree (licencia SIL OFL), alojada en `fuentes/` en tres grosores: 400, 600 y
   700. Se declara con `@font-face` al principio de `style.css`. No la cargues desde Google Fonts
   ni otro CDN. Si hace falta otro grosor, añade su `.woff2` a `fuentes/` y su `@font-face`.
+- **Añadir al calendario:** descarga un archivo `.ics` generado en el navegador por
+  `archivoICS()` (zona horaria Europe/Madrid, duración `DURACION_MIN`; si no hay hora, evento
+  de día completo). Funciona con Outlook, Google Calendar y Apple. No lo cambies por un enlace
+  de Google Calendar.
 - **Enlace de la llamada online:** se pone una sola vez en `ENLACE_ONLINE`. Mientras esté
   vacío, el botón "Unirse online" no aparece.
 
