@@ -165,3 +165,34 @@ td.fecha small .ico, .afil .ico { margin-right: .3rem; opacity: .75; }
   .banner-iconos .ico { width: 1.5rem; height: 1.5rem; }
   nav.menu ul { gap: .4rem 1rem; }
 }
+
+/* ---------- Panel "Proponer un seminario" ---------- */
+button.boton { border: none; font: inherit; font-weight: 600; cursor: pointer; }
+.panel-correo {
+  margin-top: 1rem; max-width: 560px;
+  border: 1px solid var(--borde); border-radius: 10px;
+  background: var(--azul-claro); padding: 1.1rem 1.2rem;
+}
+.panel-correo[hidden] { display: none; }
+.panel-titulo { font-size: .92rem; color: var(--gris); margin-bottom: .8rem; }
+.correo-copiar {
+  display: flex; align-items: center; gap: .55rem; flex-wrap: wrap;
+  background: #fff; border: 1px solid var(--borde); border-radius: 8px;
+  padding: .55rem .75rem; margin-bottom: .9rem;
+}
+.correo-copiar > .ico { color: var(--azul-medio); }
+.correo-dir { font-weight: 600; flex: 1; word-break: break-all; }
+button.mini {
+  display: inline-flex; align-items: center; gap: .35rem;
+  border: 1px solid var(--borde); background: #fff; color: var(--azul-medio);
+  border-radius: 999px; padding: .2rem .75rem; font: inherit; font-size: .85rem; cursor: pointer;
+}
+button.mini:hover { background: var(--azul-claro); }
+button.mini.ok { background: #e6f4ea; color: #1e7b34; border-color: #b7dfc2; }
+.opciones-correo { display: flex; flex-wrap: wrap; gap: .5rem; }
+.opciones-correo a {
+  display: inline-flex; align-items: center; gap: .4rem;
+  background: #fff; border: 1px solid var(--borde); border-radius: 6px;
+  padding: .45rem .85rem; font-size: .92rem; font-weight: 600;
+}
+.opciones-correo a:hover { border-color: var(--azul-medio); text-decoration: none; }

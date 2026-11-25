@@ -75,8 +75,7 @@
         doctorandos de TRANSyT que quieran compartir un proyecto en desarrollo.
       </p>
       <p>
-        Escribe a <a href="mailto:daniela.castanoh@upm.es?subject=Propuesta%20de%20seminario%20TRANSyT">daniela.castanoh@upm.es</a>
-        indicando:
+        Escribe a <strong>daniela.castanoh@upm.es</strong> indicando:
       </p>
       <ul style="margin:.6rem 0 0 1.5rem">
         <li>Título provisional de la presentación</li>
@@ -85,8 +84,26 @@
         <li>Si presentarías de forma presencial u online</li>
       </ul>
       <p style="margin-top:1rem">
-        <a class="boton" href="mailto:daniela.castanoh@upm.es?subject=Propuesta%20de%20seminario%20TRANSyT"><span data-i="enviar"></span>Proponer un seminario</a>
+        <button type="button" class="boton" id="btn-proponer" aria-expanded="false" aria-controls="panel-proponer">
+          <span data-i="enviar"></span>Proponer un seminario
+        </button>
       </p>
+
+      <div class="panel-correo" id="panel-proponer" hidden>
+        <p class="panel-titulo">Elige cómo quieres escribirnos. El mensaje se abrirá ya preparado con el destinatario y el asunto.</p>
+
+        <div class="correo-copiar">
+          <span data-i="correo"></span>
+          <span class="correo-dir" id="correo-dir"></span>
+          <button type="button" class="mini" id="btn-copiar"><span data-i="copiar"></span><span class="txt">Copiar</span></button>
+        </div>
+
+        <div class="opciones-correo">
+          <a id="op-outlook" target="_blank" rel="noopener"><span data-i="externo"></span>Abrir en Outlook web</a>
+          <a id="op-gmail" target="_blank" rel="noopener"><span data-i="externo"></span>Abrir en Gmail</a>
+          <a id="op-mailto"><span data-i="correo"></span>Abrir en mi programa de correo</a>
+        </div>
+      </div>
     </section>
 
   </main>
@@ -169,6 +186,47 @@
     pintar("tabla-proximos", proximos, true, "Próximamente anunciaremos nuevos seminarios.");
     pintar("tabla-anteriores", anteriores, false, "Todavía no hay seminarios anteriores.");
     document.getElementById("anio").textContent = new Date().getFullYear();
+
+    // ---- Proponer un seminario: panel con opciones de correo ----
+    (function () {
+      const CORREO = "daniela.castanoh@upm.es";
+      const ASUNTO = "Propuesta de seminario TRANSyT";
+      const CUERPO = "Hola,\n\nMe gustaría proponer un seminario para el Ciclo de Seminarios TRANSyT.\n\n" +
+        "Título provisional: \nBreve resumen: \nFechas con disponibilidad: \nModalidad (presencial / online): \n\nUn saludo,\n";
+      const enc = encodeURIComponent;
+
+      document.getElementById("correo-dir").textContent = CORREO;
+      document.getElementById("op-outlook").href =
+        `https://outlook.office.com/mail/deeplink/compose?to=${enc(CORREO)}&subject=${enc(ASUNTO)}&body=${enc(CUERPO)}`;
+      document.getElementById("op-gmail").href =
+        `https://mail.google.com/mail/?view=cm&fs=1&to=${enc(CORREO)}&su=${enc(ASUNTO)}&body=${enc(CUERPO)}`;
+      document.getElementById("op-mailto").href =
+        `mailto:${CORREO}?subject=${enc(ASUNTO)}&body=${enc(CUERPO)}`;
+
+      const btn = document.getElementById("btn-proponer");
+      const panel = document.getElementById("panel-proponer");
+      btn.addEventListener("click", () => {
+        const abrir = panel.hidden;
+        panel.hidden = !abrir;
+        btn.setAttribute("aria-expanded", String(abrir));
+      });
+
+      const copiar = document.getElementById("btn-copiar");
+      copiar.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(CORREO);
+        } catch (e) {
+          const t = document.createElement("textarea");
+          t.value = CORREO; document.body.appendChild(t); t.select();
+          try { document.execCommand("copy"); } catch (_) {}
+          t.remove();
+        }
+        const txt = copiar.querySelector(".txt");
+        txt.textContent = "¡Copiado!";
+        copiar.classList.add("ok");
+        setTimeout(() => { txt.textContent = "Copiar"; copiar.classList.remove("ok"); }, 2000);
+      });
+    })();
   </script>
 </body>
 </html>
