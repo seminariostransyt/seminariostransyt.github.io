@@ -168,6 +168,13 @@
     const parseFecha = f => { const [a,m,d] = f.split("-").map(Number); return new Date(a, m-1, d); };
     const fechaLarga = d => `${d.getDate()} de ${MESES[d.getMonth()]} de ${d.getFullYear()}`;
     const mayus = t => t.charAt(0).toUpperCase() + t.slice(1);
+    // ORCID: acepta "0000-0000-0000-0000" o la URL completa; devuelve el icono enlazado o "".
+    function enlaceOrcid(s) {
+      const m = String(s.orcid || "").match(/\d{4}-\d{4}-\d{4}-\d{3}[\dX]/i);
+      if (!m) return "";
+      const id = m[0].toUpperCase();
+      return `<a class="orcid" href="https://orcid.org/${id}" target="_blank" rel="noopener" title="ORCID de ${esc(s.ponente)}: ${id}"><img src="img/orcid.svg" alt="ORCID de ${esc(s.ponente)}" width="16" height="16"></a>`;
+    }
 
     // ---- Archivo .ics para añadir el seminario al calendario (Outlook, Google, Apple…) ----
     function archivoICS(s) {
@@ -259,7 +266,7 @@
       return `<tr class="${anulado ? "anulado" : ""}">
         <td class="fecha">${fechaLarga(d)}<small>${ico("reloj")}${DIAS[d.getDay()]}, ${s.hora ? esc(s.hora) + " h" : "hora por confirmar"}</small></td>
         <td>${titulo}</td>
-        <td><div class="ponente">${ico("persona")}${ponente}</div>${s.afiliacion ? `<div class="afil">${ico("edificio")}${esc(s.afiliacion)}</div>` : ""}</td>
+        <td><div class="ponente">${ico("persona")}${ponente}${enlaceOrcid(s)}</div>${s.afiliacion ? `<div class="afil">${ico("edificio")}${esc(s.afiliacion)}</div>` : ""}</td>
         <td class="enlaces">${enlaces.join("")}</td>
       </tr>`;
     }
@@ -292,7 +299,7 @@
       c.innerHTML = `${cab}
         <p class="cartel-fecha">${mayus(DIAS[d.getDay()])} ${d.getDate()} de ${MESES[d.getMonth()]}, ${s.hora ? esc(s.hora) + " h" : "hora por confirmar"}</p>
         <p class="cartel-titulo">${esc(s.titulo)}${anulado ? ` <span class="etiqueta">${esc(s.estado)}</span>` : ""}</p>
-        <p class="cartel-ponente">${ponente}${s.afiliacion ? `, ${esc(s.afiliacion)}` : ""}</p>
+        <p class="cartel-ponente">${ponente}${enlaceOrcid(s)}${s.afiliacion ? `, ${esc(s.afiliacion)}` : ""}</p>
         <p class="cartel-lugar">${ico("lugar")}${esc(s.lugar || LUGAR_POR_DEFECTO)}</p>
         ${anulado ? "" : `<div class="cartel-acciones">
           ${enlaceICS(s, "Añadir al calendario")}

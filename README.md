@@ -49,6 +49,7 @@ Ejemplo:
 | `hora`         | No | `"HH:MM"`, hora de Madrid. Si falta, aparece "hora por confirmar" |
 | `afiliacion`   | No | Universidad o centro |
 | `web`          | No | Enlace a la web del ponente (su nombre se vuelve un enlace) |
+| `orcid`        | No | ORCID del ponente; junto a su nombre aparece el icono de ORCID enlazado a su perfil |
 | `resumen`      | No | Se despliega al pulsar el título |
 | `lugar`        | No | Solo si es distinto de la Biblioteca TRANSyT |
 | `online`       | No | Solo si ese seminario usa un enlace distinto del general |

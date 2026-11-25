@@ -10,6 +10,7 @@
 //    titulo       texto                       (obligatorio)
 //    ponente      nombre                      (obligatorio)
 //    web          enlace a la web del ponente (opcional)
+//    orcid        ORCID del ponente, p. ej. "0000-0002-1825-0097" (opcional)
 //    afiliacion   institución                 (opcional)
 //    resumen      abstract breve              (opcional; se despliega al pulsar)
 //    lugar        sala / online               (opcional; si falta se usa LUGAR_POR_DEFECTO)
@@ -33,6 +34,7 @@ const SEMINARIOS = [
     ponente: "Nombre Apellido",
     afiliacion: "Universidad de ejemplo",
     web: "",
+    orcid: "0000-0002-1825-0097",   // ORCID de ejemplo oficial (Josiah Carberry)
     hora: "12:00",
     resumen: "Breve resumen de la charla. Aparece desplegable al pulsar sobre el título.",
   },

@@ -19,6 +19,7 @@ Título:
 Ponente(s):                    (si son varios, sepáralos con comas)
 Afiliación:                    (opcional)
 Web del ponente:               (opcional)
+ORCID:                         (opcional, p. ej. 0000-0002-1825-0097)
 Resumen:                       (opcional)
 Lugar:                         (opcional, solo si NO es la Biblioteca TRANSyT)
 Enlace online:                 (opcional, solo si NO es el enlace habitual)
@@ -76,6 +77,7 @@ Título: Movilidad activa y calidad del aire en Madrid
 Ponente(s): Ana García
 Afiliación: Universidad de Valencia
 Web del ponente: https://ejemplo.es/ana-garcia
+ORCID: 0000-0002-1825-0097
 Resumen: Analizamos el efecto de las zonas de bajas emisiones en los desplazamientos a pie y en bicicleta.
 
 DIAPOSITIVAS

@@ -24,7 +24,7 @@ Universidad Politécnica de Madrid.
 | `style.css` | Diseño y colores (variables en `:root`) | Cambios visuales |
 | `iconos.js` | Objeto `ICONOS` con trazos SVG (estilo Lucide) y función `ico()` | Añadir un icono nuevo |
 | `fuentes/` | Archivos `.woff2` de la tipografía Figtree y su licencia (`OFL.txt`) | Solo si cambia la tipografía |
-| `img/` | Logos de TRANSyT (`transyt-circulo.png` en la cabecera, `transyt-logo.png` en el pie) y `favicon.png` / `apple-touch-icon.png` | Solo si cambia el logo oficial |
+| `img/` | Logos de TRANSyT (`transyt-circulo.png` en la cabecera, `transyt-logo.png` en el pie), `favicon.png` / `apple-touch-icon.png` y el icono `orcid.svg` | Solo si cambia el logo oficial |
 | `PLANTILLA.md` | Plantilla con la que el equipo envía los cambios (nuevo seminario, cambios, diapositivas, aplazar/cancelar, enlace online) | Si cambian los campos de un seminario |
 | `README.md` | Guía para personas | Actualizarlo si cambia cómo se edita la web |
 | `AGENTS.md` | Este archivo | Actualizarlo si cambian las reglas o la estructura |
@@ -43,6 +43,7 @@ bloques de sitio ni crees listas separadas.
   ponente: "Nombre Apellido",   // obligatorio; varios ponentes: "Nombre A, Nombre B"
   afiliacion: "Universidad",    // opcional
   web: "https://...",           // opcional, web del ponente
+  orcid: "0000-0002-1825-0097", // opcional, ORCID del ponente (vale el número o la URL)
   resumen: "Abstract breve.",   // opcional, texto plano
   lugar: "…",                   // opcional, solo si NO es la Biblioteca TRANSyT
   online: "https://...",        // opcional, solo si difiere de ENLACE_ONLINE
@@ -57,7 +58,7 @@ El equipo envía los cambios con los bloques de `PLANTILLA.md`. Tradúcelos así
 
 | Bloque | Qué hacer en `seminarios.js` |
 |--------|------------------------------|
-| `NUEVO SEMINARIO` | Añadir un objeto. `Fecha` DD/MM/AAAA → `fecha` "AAAA-MM-DD"; `Hora` → `hora` (si pone "por confirmar", omitir); `Título` → `titulo`; `Ponente(s)` → `ponente`; `Afiliación` → `afiliacion`; `Web del ponente` → `web`; `Resumen` → `resumen`; `Lugar` → `lugar`; `Enlace online` → `online`. Los campos vacíos se omiten. |
+| `NUEVO SEMINARIO` | Añadir un objeto. `Fecha` DD/MM/AAAA → `fecha` "AAAA-MM-DD"; `Hora` → `hora` (si pone "por confirmar", omitir); `Título` → `titulo`; `Ponente(s)` → `ponente`; `Afiliación` → `afiliacion`; `Web del ponente` → `web`; `ORCID` → `orcid`; `Resumen` → `resumen`; `Lugar` → `lugar`; `Enlace online` → `online`. Los campos vacíos se omiten. |
 | `CAMBIAR SEMINARIO` | Localizar el seminario por fecha y ponente y cambiar solo los campos indicados. |
 | `DIAPOSITIVAS` | Añadir `presentacion` con el enlace de SharePoint al seminario indicado. |
 | `APLAZAR / CANCELAR` | Añadir `estado`. Si trae `Nueva fecha`, cambiar `fecha` y quitar `estado`. |
@@ -124,6 +125,10 @@ Reglas para los datos:
   `archivoICS()` (zona horaria Europe/Madrid, duración `DURACION_MIN`; si no hay hora, evento
   de día completo). Funciona con Outlook, Google Calendar y Apple. No lo cambies por un enlace
   de Google Calendar.
+- **ORCID:** si un seminario tiene `orcid`, junto al nombre del ponente (en el cartel y en las
+  tablas) aparece el icono oficial de ORCID (`img/orcid.svg`, verde #A6CE39, sin recolorear)
+  enlazado a `https://orcid.org/<id>`. Lo genera `enlaceOrcid()`; si el identificador no es
+  válido, no se muestra nada. El ORCID del seminario de ejemplo es el de prueba oficial de ORCID.
 - **Enlace de la llamada online:** se pone una sola vez en `ENLACE_ONLINE`. Mientras esté
   vacío, el botón "Unirse online" no aparece.
 

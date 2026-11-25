@@ -299,3 +299,10 @@ footer { padding: 2.5rem 0 3rem; }
   .tramo strong { font-size: 1.15rem; }
   .tramo-texto { font-size: .82rem; line-height: 1.35; }
 }
+
+/* ---------- ORCID ---------- */
+.orcid { display: inline-flex; margin-left: .35rem; vertical-align: -0.15em; border-radius: 50%; }
+.orcid img { display: block; width: 16px; height: 16px; }
+.orcid:hover { box-shadow: 0 0 0 2px var(--azul-claro); }
+.cartel .orcid { vertical-align: -0.12em; }
+.ponente .orcid { margin-left: 0; }
