@@ -23,6 +23,7 @@ Universidad Politécnica de Madrid.
 | `index.html` | Textos de la página y el script que pinta las tablas y el panel de propuestas | Cambiar textos de "Sobre el ciclo", "Formato" o "Contactar para próximos seminarios" |
 | `style.css` | Diseño y colores (variables en `:root`) | Cambios visuales |
 | `iconos.js` | Objeto `ICONOS` con trazos SVG (estilo Lucide) y función `ico()` | Añadir un icono nuevo |
+| `fuentes/` | Archivos `.woff2` de la tipografía Figtree y su licencia (`OFL.txt`) | Solo si cambia la tipografía |
 | `img/` | Logos de TRANSyT (`transyt-circulo.png` en la cabecera, `transyt-logo.png` en el pie) y `favicon.png` / `apple-touch-icon.png` | Solo si cambia el logo oficial |
 | `README.md` | Guía para personas | Actualizarlo si cambia cómo se edita la web |
 | `AGENTS.md` | Este archivo | Actualizarlo si cambian las reglas o la estructura |
@@ -80,9 +81,9 @@ Reglas para los datos:
   TRANSyT y online. Horario variable según el seminario.
 - **Logos:** el logo circular de TRANSyT va en la cabecera (con aro blanco) y como favicon; el
   logo completo con texto va en el pie. Son los logos oficiales: no los recolorees ni deformes.
-- **Tipografía:** Aptos, la fuente de Microsoft 365, cargada desde el ordenador del visitante
-  (`font-family` en `body` de `style.css`). No se aloja ni se carga desde fuera: su licencia
-  no lo permite. Quien no la tenga instalada ve Segoe UI o la fuente del sistema.
+- **Tipografía:** Figtree (licencia SIL OFL), alojada en `fuentes/` en tres grosores: 400, 600 y
+  700. Se declara con `@font-face` al principio de `style.css`. No la cargues desde Google Fonts
+  ni otro CDN. Si hace falta otro grosor, añade su `.woff2` a `fuentes/` y su `@font-face`.
 - **Enlace de la llamada online:** se pone una sola vez en `ENLACE_ONLINE`. Mientras esté
   vacío, el botón "Unirse online" no aparece.
 

@@ -1,3 +1,26 @@
+/* ---------- Tipografía: Figtree (SIL Open Font License, ver fuentes/OFL.txt) ---------- */
+@font-face {
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fuentes/figtree-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fuentes/figtree-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fuentes/figtree-700.woff2") format("woff2");
+}
+
 :root {
   --azul: #003a70;
   --azul-medio: #0b5ea8;
@@ -10,7 +33,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: Aptos, "Aptos Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: "Figtree", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.6;
   color: var(--texto);
   background: #fff;

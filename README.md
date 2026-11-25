@@ -79,6 +79,7 @@ Comprueba que el enlace de SharePoint permite el acceso a quien quieras que lo v
 | `seminarios.js`   | Lista de seminarios, lugar por defecto y enlace de la llamada online |
 | `style.css`       | Colores y diseño |
 | `AGENTS.md`       | Instrucciones para asistentes de IA (Claude, ChatGPT, Copilot, Gemini…) |
+| `fuentes/`        | Tipografía Figtree (licencia libre SIL OFL) |
 | `img/`            | Logos de TRANSyT y favicon |
 | `iconos.js`       | Iconos de la página (trazos basados en [Lucide](https://lucide.dev), licencia ISC) |
 
