@@ -101,8 +101,6 @@
         <div class="opciones-correo">
           <a id="op-mailto"><span data-i="correo"></span>Outlook (escritorio)</a>
           <a id="op-upm" target="_blank" rel="noopener"><span data-i="externo"></span>Webmail UPM</a>
-          <a id="op-outlook" target="_blank" rel="noopener"><span data-i="externo"></span>Outlook web / Microsoft 365</a>
-          <a id="op-gmail" target="_blank" rel="noopener"><span data-i="externo"></span>Gmail</a>
         </div>
         <p class="nota-webmail" id="nota-webmail" hidden>
           Hemos copiado la dirección de correo. Si al iniciar sesión en el Webmail UPM no
@@ -200,10 +198,6 @@
       const enc = encodeURIComponent;
 
       document.getElementById("correo-dir").textContent = CORREO;
-      document.getElementById("op-outlook").href =
-        `https://outlook.office.com/mail/deeplink/compose?to=${enc(CORREO)}&subject=${enc(ASUNTO)}&body=${enc(CUERPO)}`;
-      document.getElementById("op-gmail").href =
-        `https://mail.google.com/mail/?view=cm&fs=1&to=${enc(CORREO)}&su=${enc(ASUNTO)}&body=${enc(CUERPO)}`;
       document.getElementById("op-mailto").href =
         `mailto:${CORREO}?subject=${enc(ASUNTO)}&body=${enc(CUERPO)}`;
       const upm = document.getElementById("op-upm");
