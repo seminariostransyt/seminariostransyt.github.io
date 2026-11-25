@@ -198,3 +198,19 @@ button.mini.ok { background: #e6f4ea; color: #1e7b34; border-color: #b7dfc2; }
 .opciones-correo a:hover { border-color: var(--azul-medio); text-decoration: none; }
 .nota-webmail { margin-top: .8rem; font-size: .88rem; color: var(--gris); }
 .nota-webmail[hidden] { display: none; }
+
+/* ---------- Logos ---------- */
+.banner-titulo { display: flex; align-items: center; gap: 1.2rem; }
+.banner-logo {
+  flex-shrink: 0; display: block; border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(255,255,255,.9), 0 6px 18px rgba(0,0,0,.25);
+}
+.banner-logo img { display: block; width: 96px; height: 96px; border-radius: 50%; }
+.footer-logo { display: table; margin: 0 auto 1rem; }
+.footer-logo img { display: block; width: 260px; max-width: 70vw; height: auto; }
+
+@media (max-width: 640px) {
+  .banner-titulo { gap: .8rem; }
+  .banner-logo img { width: 64px; height: 64px; }
+}
+.banner-titulo + p { margin-top: 1rem; }

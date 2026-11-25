@@ -23,6 +23,7 @@ Universidad Politécnica de Madrid.
 | `index.html` | Textos de la página y el script que pinta las tablas y el panel de propuestas | Cambiar textos de "Sobre el ciclo", "Formato" o "Contactar para próximos seminarios" |
 | `style.css` | Diseño y colores (variables en `:root`) | Cambios visuales |
 | `iconos.js` | Objeto `ICONOS` con trazos SVG (estilo Lucide) y función `ico()` | Añadir un icono nuevo |
+| `img/` | Logos de TRANSyT (`transyt-circulo.png` en la cabecera, `transyt-logo.png` en el pie) y `favicon.png` / `apple-touch-icon.png` | Solo si cambia el logo oficial |
 | `README.md` | Guía para personas | Actualizarlo si cambia cómo se edita la web |
 | `AGENTS.md` | Este archivo | Actualizarlo si cambian las reglas o la estructura |
 
@@ -77,6 +78,8 @@ Reglas para los datos:
   (`https://www.upm.es/webmail_personal/`, Roundcube). No añadas Gmail ni Outlook web.
 - **Formato:** 30 min de presentación + 20 de debate (`DURACION_MIN = 50`). Lugar: Biblioteca
   TRANSyT y online. Horario variable según el seminario.
+- **Logos:** el logo circular de TRANSyT va en la cabecera (con aro blanco) y como favicon; el
+  logo completo con texto va en el pie. Son los logos oficiales: no los recolorees ni deformes.
 - **Enlace de la llamada online:** se pone una sola vez en `ENLACE_ONLINE`. Mientras esté
   vacío, el botón "Unirse online" no aparece.
 
