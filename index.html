@@ -161,7 +161,6 @@
         if (futuro && (s.online || ENLACE_ONLINE)) enlaces.push(`<a href="${esc(s.online || ENLACE_ONLINE)}" target="_blank" rel="noopener">${ico("camara")}Unirse online</a>`);
         if (futuro) enlaces.push(`<a href="${enlaceCalendario(s)}" target="_blank" rel="noopener">${ico("calendarioMas")}Calendario</a>`);
         if (s.presentacion) enlaces.push(`<a href="${esc(s.presentacion)}" target="_blank" rel="noopener">${ico("diapositivas")}Diapositivas</a>`);
-        if (s.video) enlaces.push(`<a href="${esc(s.video)}" target="_blank" rel="noopener">${ico("video")}Vídeo</a>`);
       }
 
       return `<tr class="${anulado ? "anulado" : ""}">

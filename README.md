@@ -46,7 +46,6 @@ Ejemplo:
 | `lugar`        | No | Solo si es distinto de la Biblioteca TRANSyT |
 | `online`       | No | Solo si ese seminario usa un enlace distinto del general |
 | `presentacion` | No | Enlace o ruta al PDF de las diapositivas |
-| `video`        | No | Enlace a la grabación |
 | `estado`       | No | `"aplazado"` o `"cancelado"` (el título aparece tachado) |
 
 ## Enlace de la llamada online

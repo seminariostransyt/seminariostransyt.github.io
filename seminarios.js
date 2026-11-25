@@ -15,7 +15,6 @@
 //    lugar        sala / online               (opcional; si falta se usa LUGAR_POR_DEFECTO)
 //    online       enlace de la llamada        (opcional; si falta se usa ENLACE_ONLINE)
 //    presentacion ruta o enlace al PDF        (opcional; p. ej. "presentaciones/2026-12-10.pdf")
-//    video        enlace a la grabación       (opcional)
 //    estado       "aplazado" o "cancelado"    (opcional)
 // =====================================================================
 
@@ -50,7 +49,6 @@ const SEMINARIOS = [
     hora: "16:00",
     afiliacion: "Centro de investigación de ejemplo",
     presentacion: "#",
-    video: "#",
   },
   {
     fecha: "2026-09-24",
