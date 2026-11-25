@@ -80,6 +80,9 @@ Reglas para los datos:
   TRANSyT y online. Horario variable según el seminario.
 - **Logos:** el logo circular de TRANSyT va en la cabecera (con aro blanco) y como favicon; el
   logo completo con texto va en el pie. Son los logos oficiales: no los recolorees ni deformes.
+- **Tipografía:** Aptos, la fuente de Microsoft 365, cargada desde el ordenador del visitante
+  (`font-family` en `body` de `style.css`). No se aloja ni se carga desde fuera: su licencia
+  no lo permite. Quien no la tenga instalada ve Segoe UI o la fuente del sistema.
 - **Enlace de la llamada online:** se pone una sola vez en `ENLACE_ONLINE`. Mientras esté
   vacío, el botón "Unirse online" no aparece.
 
