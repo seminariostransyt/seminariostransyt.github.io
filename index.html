@@ -47,10 +47,10 @@
 
       <h3 style="margin:1.5rem 0 .8rem;color:var(--azul)">Formato</h3>
       <div class="formato">
-        <div><strong>Presentación</strong>40 minutos</div>
+        <div><strong>Presentación</strong>30 minutos</div>
         <div><strong>Debate</strong>20 minutos</div>
-        <div><strong>Lugar</strong>TRANSyT (ETSI Caminos) y online</div>
-        <div><strong>Horario</strong>Jueves, 12:00 h</div>
+        <div><strong>Lugar</strong>Biblioteca TRANSyT y online</div>
+        <div><strong>Horario</strong>Según el seminario (ver fechas abajo)</div>
       </div>
     </section>
 
@@ -95,17 +95,24 @@
     const fechaLarga = d => `${d.getDate()} de ${MESES[d.getMonth()]} de ${d.getFullYear()}`;
 
     function enlaceCalendario(s) {
-      const hora = (s.hora || HORA_POR_DEFECTO).replace(":", "");
-      const ini = s.fecha.replace(/-/g, "") + "T" + hora + "00";
-      const [h, m] = (s.hora || HORA_POR_DEFECTO).split(":").map(Number);
-      const finMin = h * 60 + m + DURACION_MIN;
-      const fin = s.fecha.replace(/-/g, "") + "T" + String(Math.floor(finMin/60)).padStart(2,"0") + String(finMin%60).padStart(2,"0") + "00";
+      const dia = s.fecha.replace(/-/g, "");
+      let dates;
+      if (s.hora) {
+        const [h, m] = s.hora.split(":").map(Number);
+        const fin = h * 60 + m + DURACION_MIN;
+        const hhmm = x => String(Math.floor(x/60)).padStart(2,"0") + String(x%60).padStart(2,"0");
+        dates = `${dia}T${hhmm(h*60+m)}00/${dia}T${hhmm(fin)}00`;
+      } else {
+        const sig = parseFecha(s.fecha); sig.setDate(sig.getDate() + 1);
+        dates = `${dia}/${sig.getFullYear()}${String(sig.getMonth()+1).padStart(2,"0")}${String(sig.getDate()).padStart(2,"0")}`;
+      }
+      const online = s.online || ENLACE_ONLINE;
       const p = new URLSearchParams({
         action: "TEMPLATE",
         text: `Seminario TRANSyT: ${s.titulo}`,
-        dates: `${ini}/${fin}`,
+        dates,
         ctz: "Europe/Madrid",
-        details: `${s.ponente}${s.afiliacion ? " (" + s.afiliacion + ")" : ""}${s.online && s.online !== "#" ? "\n" + s.online : ""}`,
+        details: `${s.ponente}${s.afiliacion ? " (" + s.afiliacion + ")" : ""}${online ? "\n" + online : ""}`,
         location: s.lugar || LUGAR_POR_DEFECTO,
       });
       return "https://calendar.google.com/calendar/render?" + p.toString();
@@ -122,14 +129,14 @@
 
       const enlaces = [];
       if (!anulado) {
-        if (futuro && s.online) enlaces.push(`<a href="${esc(s.online)}" target="_blank" rel="noopener">Unirse online</a>`);
+        if (futuro && (s.online || ENLACE_ONLINE)) enlaces.push(`<a href="${esc(s.online || ENLACE_ONLINE)}" target="_blank" rel="noopener">Unirse online</a>`);
         if (futuro) enlaces.push(`<a href="${enlaceCalendario(s)}" target="_blank" rel="noopener">+ Calendario</a>`);
         if (s.presentacion) enlaces.push(`<a href="${esc(s.presentacion)}" target="_blank" rel="noopener">Diapositivas</a>`);
         if (s.video) enlaces.push(`<a href="${esc(s.video)}" target="_blank" rel="noopener">Vídeo</a>`);
       }
 
       return `<tr class="${anulado ? "anulado" : ""}">
-        <td class="fecha">${fechaLarga(d)}<small>${DIAS[d.getDay()]}, ${esc(s.hora || HORA_POR_DEFECTO)} h</small></td>
+        <td class="fecha">${fechaLarga(d)}<small>${DIAS[d.getDay()]}, ${s.hora ? esc(s.hora) + " h" : "hora por confirmar"}</small></td>
         <td>${titulo}</td>
         <td>${ponente}${s.afiliacion ? `<div class="afil">${esc(s.afiliacion)}</div>` : ""}</td>
         <td class="enlaces">${enlaces.join("")}</td>
