@@ -52,6 +52,21 @@ bloques de sitio ni crees listas separadas.
 },
 ```
 
+### El cartel de la cabecera (panel negro)
+
+El panel negro "Próximo seminario" (`#cartel`) **se actualiza solo**: `pintarCartel()` muestra
+el seminario con la fecha más cercana igual o posterior a hoy. No lo edites a mano en
+`index.html`; para cambiar lo que muestra, cambia los datos en `seminarios.js`.
+
+- El día del seminario sigue en el cartel; al día siguiente pasa a "Seminarios anteriores" y el
+  cartel muestra el siguiente.
+- El orden de los bloques en `SEMINARIOS` no importa: se ordenan por fecha.
+- Si el más cercano está aplazado o cancelado, el cartel lo muestra igualmente con su etiqueta
+  y sin botones (decisión tomada: no saltarlo).
+- Si no hay ninguno próximo, muestra "Fecha por anunciar" y un enlace a proponer un seminario.
+- Después de cada cambio en los seminarios, comprueba que el cartel muestra el seminario y los
+  datos (fecha, hora, título, ponente, ORCID, afiliación, lugar) esperados.
+
 ### Peticiones con la plantilla
 
 El equipo envía los cambios con los bloques de `PLANTILLA.md`. Tradúcelos así:

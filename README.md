@@ -63,6 +63,19 @@ En los próximos seminarios, el botón **Añadir al calendario** (en el cartel) 
 calendario de Apple. Se genera solo con los datos de `seminarios.js`: fecha, hora, 50 minutos de
 duración, lugar, ponente, resumen y enlace online.
 
+## El panel negro de la cabecera
+
+El recuadro negro **"Próximo seminario"** se actualiza solo: siempre muestra el seminario más
+cercano de la lista de `seminarios.js`. No hay que tocarlo nunca.
+
+- Con varios seminarios programados, muestra el de fecha más próxima.
+- El día del seminario sigue apareciendo; al día siguiente pasa a "Seminarios anteriores" y el
+  panel muestra el siguiente.
+- Si el más cercano está aplazado o cancelado, lo muestra con su etiqueta.
+- Si no hay ninguno programado, dice "Fecha por anunciar".
+
+Para cambiar lo que aparece en el panel, basta con cambiar los datos del seminario.
+
 ## Enlace de la llamada online
 
 Al principio de `seminarios.js`:
