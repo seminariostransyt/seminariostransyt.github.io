@@ -12,8 +12,8 @@ instalar nada: cada cambio que se guarda en el repositorio aparece en la web en 
 
 ## Añadir o editar un seminario
 
-Todos los seminarios están en **`seminarios.js`**. La página los ordena por fecha y los
-coloca sola en **Próximos seminarios** o **Seminarios anteriores**, así que no hace falta
+Todos los seminarios están en **`seminarios.js`**. La página los ordena por fecha, muestra el siguiente en el
+cartel de la cabecera y los coloca sola en **Próximos seminarios** o **Seminarios anteriores**, así que no hace falta
 moverlos cuando pasa la fecha.
 
 1. Abre `seminarios.js` en GitHub y pulsa el lápiz ✏️ para editar.

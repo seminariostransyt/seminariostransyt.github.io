@@ -20,7 +20,7 @@ Universidad Politécnica de Madrid.
 | Archivo | Qué contiene | Cuándo tocarlo |
 |---------|--------------|----------------|
 | `seminarios.js` | Lista `SEMINARIOS` y constantes `DURACION_MIN`, `LUGAR_POR_DEFECTO`, `ENLACE_ONLINE` | **Casi todas las actualizaciones**: añadir, editar o anular seminarios; poner enlaces |
-| `index.html` | Textos de la página y el script que pinta las tablas y el panel de propuestas | Cambiar textos de "Sobre el ciclo", "Formato" o "Contactar para próximos seminarios" |
+| `index.html` | Textos de la página y el script que pinta el cartel, las tablas y el panel de propuestas | Cambiar textos de "Sobre el ciclo", "Formato" o "Contactar para próximos seminarios" |
 | `style.css` | Diseño y colores (variables en `:root`) | Cambios visuales |
 | `iconos.js` | Objeto `ICONOS` con trazos SVG (estilo Lucide) y función `ico()` | Añadir un icono nuevo |
 | `fuentes/` | Archivos `.woff2` de la tipografía Figtree y su licencia (`OFL.txt`) | Solo si cambia la tipografía |
@@ -79,6 +79,17 @@ Reglas para los datos:
   (`https://www.upm.es/webmail_personal/`, Roundcube). No añadas Gmail ni Outlook web.
 - **Formato:** 30 min de presentación + 20 de debate (`DURACION_MIN = 50`). Lugar: Biblioteca
   TRANSyT y online. Horario variable según el seminario.
+- **Diseño (concepto "señalética de transporte"):** cabecera azul lisa (sin degradados) con
+  el logo, el título y el **cartel del próximo seminario** (`#cartel`, panel oscuro con la
+  flecha del logo). El cartel lo rellena `pintarCartel()` con el primer seminario próximo; si
+  no hay ninguno muestra "Fecha por anunciar". El resto de la página es sobrio: menú blanco
+  fijo, ficha de formato junto a "Sobre el ciclo", tablas con líneas finas y franja azul claro
+  para las propuestas. Los pictogramas van en baldosas cuadradas (`.baldosa`). No añadas
+  etiquetas en mayúsculas, degradados ni tarjetas decorativas.
+- **Colores:** salen del logo. `--azul-medio` (#008BD2, azul TRANSyT) para baldosas y acentos;
+  `--azul` (#005A8F) para cabecera, enlaces y botones; `--texto` (#1D1D1B, negro del
+  logotipo) para texto y cartel; `--azul-claro` (#E9F3FA) para fondos suaves. No uses
+  `--azul-medio` para texto sobre blanco: no tiene contraste suficiente.
 - **Logos:** el logo circular de TRANSyT va en la cabecera (con aro blanco) y como favicon; el
   logo completo con texto va en el pie. Son los logos oficiales: no los recolorees ni deformes.
 - **Tipografía:** Figtree (licencia SIL OFL), alojada en `fuentes/` en tres grosores: 400, 600 y
@@ -107,6 +118,7 @@ Reglas para los datos:
 2. Abre `index.html` en un navegador, o con un navegador sin interfaz como Playwright, y
    verifica que:
    - no hay errores en la consola;
+   - el cartel de la cabecera muestra el próximo seminario;
    - las dos tablas muestran los seminarios esperados en el orden correcto;
    - los enlaces nuevos (diapositivas, web del ponente) apuntan a donde deben.
 3. Si cambias el panel de propuestas, pulsa "Proponer un seminario" y revisa los enlaces
