@@ -25,6 +25,7 @@ Universidad Politécnica de Madrid.
 | `iconos.js` | Objeto `ICONOS` con trazos SVG (estilo Lucide) y función `ico()` | Añadir un icono nuevo |
 | `fuentes/` | Archivos `.woff2` de la tipografía Figtree y su licencia (`OFL.txt`) | Solo si cambia la tipografía |
 | `img/` | Logos de TRANSyT (`transyt-circulo.png` en la cabecera, `transyt-logo.png` en el pie) y `favicon.png` / `apple-touch-icon.png` | Solo si cambia el logo oficial |
+| `PLANTILLA.md` | Plantilla con la que el equipo envía los cambios (nuevo seminario, cambios, diapositivas, aplazar/cancelar, enlace online) | Si cambian los campos de un seminario |
 | `README.md` | Guía para personas | Actualizarlo si cambia cómo se edita la web |
 | `AGENTS.md` | Este archivo | Actualizarlo si cambian las reglas o la estructura |
 
@@ -49,6 +50,21 @@ bloques de sitio ni crees listas separadas.
   estado: "aplazado",           // opcional: "aplazado" o "cancelado"
 },
 ```
+
+### Peticiones con la plantilla
+
+El equipo envía los cambios con los bloques de `PLANTILLA.md`. Tradúcelos así:
+
+| Bloque | Qué hacer en `seminarios.js` |
+|--------|------------------------------|
+| `NUEVO SEMINARIO` | Añadir un objeto. `Fecha` DD/MM/AAAA → `fecha` "AAAA-MM-DD"; `Hora` → `hora` (si pone "por confirmar", omitir); `Título` → `titulo`; `Ponente(s)` → `ponente`; `Afiliación` → `afiliacion`; `Web del ponente` → `web`; `Resumen` → `resumen`; `Lugar` → `lugar`; `Enlace online` → `online`. Los campos vacíos se omiten. |
+| `CAMBIAR SEMINARIO` | Localizar el seminario por fecha y ponente y cambiar solo los campos indicados. |
+| `DIAPOSITIVAS` | Añadir `presentacion` con el enlace de SharePoint al seminario indicado. |
+| `APLAZAR / CANCELAR` | Añadir `estado`. Si trae `Nueva fecha`, cambiar `fecha` y quitar `estado`. |
+| `ENLACE ONLINE` | Poner el enlace en la constante `ENLACE_ONLINE`. |
+
+Si no encuentras el seminario al que se refiere un bloque, o falta un campo obligatorio
+(fecha, título o ponente), pregunta en vez de suponer.
 
 Reglas para los datos:
 

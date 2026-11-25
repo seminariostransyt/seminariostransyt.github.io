@@ -10,6 +10,13 @@ instalar nada: cada cambio que se guarda en el repositorio aparece en la web en 
 
 ---
 
+## Enviar cambios con la plantilla
+
+En [`PLANTILLA.md`](PLANTILLA.md) hay un bloque para cada tipo de cambio: nuevo seminario,
+cambiar datos, añadir diapositivas, aplazar o cancelar, y enlace online. Rellénalo y envíalo a
+quien mantenga la web o a un asistente de IA. Los asistentes saben interpretarlo gracias a
+`AGENTS.md`.
+
 ## Añadir o editar un seminario
 
 Todos los seminarios están en **`seminarios.js`**. La página los ordena por fecha, muestra el siguiente en el
