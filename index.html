@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seminarios TRANSyT · Universidad Politécnica de Madrid</title>
+  <meta name="description" content="Ciclo de seminarios del Centro de Investigación del Transporte (TRANSyT) de la Universidad Politécnica de Madrid.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="banner">
+    <div class="container">
+      <div class="eyebrow">TRANSyT · Universidad Politécnica de Madrid</div>
+      <h1>Ciclo de Seminarios TRANSyT</h1>
+      <p>Un espacio para presentar y discutir investigación en transporte, movilidad y territorio.</p>
+    </div>
+  </header>
+
+  <nav class="menu">
+    <ul>
+      <li><a href="#sobre">Sobre el ciclo</a></li>
+      <li><a href="#proximos">Próximos seminarios</a></li>
+      <li><a href="#anteriores">Seminarios anteriores</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+
+    <section id="sobre">
+      <h2>Sobre el ciclo</h2>
+      <p>
+        El <strong>Ciclo de Seminarios TRANSyT</strong> reúne a investigadores del
+        Centro de Investigación del Transporte de la UPM y a ponentes invitados para
+        compartir trabajos en curso, recibir comentarios y fomentar la colaboración.
+        Animamos a los asistentes a intervenir y preguntar durante la presentación.
+      </p>
+      <p>
+        Los seminarios están abiertos a investigadores, estudiantes de doctorado y
+        profesionales interesados en el transporte y la movilidad.
+      </p>
+
+      <h3 style="margin:1.5rem 0 .8rem;color:var(--azul)">Formato</h3>
+      <div class="formato">
+        <div><strong>Presentación</strong>40 minutos</div>
+        <div><strong>Debate</strong>20 minutos</div>
+        <div><strong>Lugar</strong>TRANSyT (ETSI Caminos) y online</div>
+        <div><strong>Horario</strong>Jueves, 12:00 h</div>
+      </div>
+    </section>
+
+    <section id="proximos">
+      <h2>Próximos seminarios</h2>
+      <div class="tabla-wrap"><table class="seminarios" id="tabla-proximos"></table></div>
+    </section>
+
+    <section id="anteriores">
+      <h2>Seminarios anteriores</h2>
+      <div class="tabla-wrap"><table class="seminarios" id="tabla-anteriores"></table></div>
+    </section>
+
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p>
+        Si quieres recibir los avisos de los seminarios, apúntate a la
+        <a href="mailto:seminarios.transyt@upm.es?subject=Alta%20lista%20seminarios%20TRANSyT">lista de correo</a>.
+        Si te interesa presentar tu trabajo, escribe a
+        <a href="mailto:seminarios.transyt@upm.es?subject=Propuesta%20de%20seminario">la organización</a>.
+      </p>
+      <p class="afil" style="margin-top:.8rem">
+        Centro de Investigación del Transporte (TRANSyT) · ETSI Caminos, Canales y Puertos ·
+        C/ Profesor Aranguren 3, 28040 Madrid
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    © <span id="anio"></span> TRANSyT · Universidad Politécnica de Madrid ·
+    <a href="https://www.transyt.upm.es/" target="_blank" rel="noopener">transyt.upm.es</a>
+  </footer>
+
+  <script src="seminarios.js"></script>
+  <script>
+    const MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+    const DIAS = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
+
+    const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+    const parseFecha = f => { const [a,m,d] = f.split("-").map(Number); return new Date(a, m-1, d); };
+    const fechaLarga = d => `${d.getDate()} de ${MESES[d.getMonth()]} de ${d.getFullYear()}`;
+
+    function enlaceCalendario(s) {
+      const hora = (s.hora || HORA_POR_DEFECTO).replace(":", "");
+      const ini = s.fecha.replace(/-/g, "") + "T" + hora + "00";
+      const [h, m] = (s.hora || HORA_POR_DEFECTO).split(":").map(Number);
+      const finMin = h * 60 + m + DURACION_MIN;
+      const fin = s.fecha.replace(/-/g, "") + "T" + String(Math.floor(finMin/60)).padStart(2,"0") + String(finMin%60).padStart(2,"0") + "00";
+      const p = new URLSearchParams({
+        action: "TEMPLATE",
+        text: `Seminario TRANSyT: ${s.titulo}`,
+        dates: `${ini}/${fin}`,
+        ctz: "Europe/Madrid",
+        details: `${s.ponente}${s.afiliacion ? " (" + s.afiliacion + ")" : ""}${s.online && s.online !== "#" ? "\n" + s.online : ""}`,
+        location: s.lugar || LUGAR_POR_DEFECTO,
+      });
+      return "https://calendar.google.com/calendar/render?" + p.toString();
+    }
+
+    function fila(s, futuro) {
+      const d = parseFecha(s.fecha);
+      const anulado = s.estado === "aplazado" || s.estado === "cancelado";
+      const ponente = s.web ? `<a href="${esc(s.web)}" target="_blank" rel="noopener">${esc(s.ponente)}</a>` : esc(s.ponente);
+      const etiqueta = anulado ? `<span class="etiqueta">${esc(s.estado)}</span>` : "";
+      const titulo = s.resumen
+        ? `<details><summary><span class="titulo">${esc(s.titulo)}</span>${etiqueta}</summary><p>${esc(s.resumen)}</p></details>`
+        : `<span class="titulo">${esc(s.titulo)}</span>${etiqueta}`;
+
+      const enlaces = [];
+      if (!anulado) {
+        if (futuro && s.online) enlaces.push(`<a href="${esc(s.online)}" target="_blank" rel="noopener">Unirse online</a>`);
+        if (futuro) enlaces.push(`<a href="${enlaceCalendario(s)}" target="_blank" rel="noopener">+ Calendario</a>`);
+        if (s.presentacion) enlaces.push(`<a href="${esc(s.presentacion)}" target="_blank" rel="noopener">Diapositivas</a>`);
+        if (s.video) enlaces.push(`<a href="${esc(s.video)}" target="_blank" rel="noopener">Vídeo</a>`);
+      }
+
+      return `<tr class="${anulado ? "anulado" : ""}">
+        <td class="fecha">${fechaLarga(d)}<small>${DIAS[d.getDay()]}, ${esc(s.hora || HORA_POR_DEFECTO)} h</small></td>
+        <td>${titulo}</td>
+        <td>${ponente}${s.afiliacion ? `<div class="afil">${esc(s.afiliacion)}</div>` : ""}</td>
+        <td class="enlaces">${enlaces.join("")}</td>
+      </tr>`;
+    }
+
+    function pintar(id, lista, futuro, textoVacio) {
+      const t = document.getElementById(id);
+      if (!lista.length) { t.outerHTML = `<p class="vacio">${textoVacio}</p>`; return; }
+      t.innerHTML = `<thead><tr><th>Fecha</th><th>Título</th><th>Ponente</th><th>Enlaces</th></tr></thead>
+        <tbody>${lista.map(s => fila(s, futuro)).join("")}</tbody>`;
+    }
+
+    const hoy = new Date(); hoy.setHours(0,0,0,0);
+    const proximos = SEMINARIOS.filter(s => parseFecha(s.fecha) >= hoy).sort((a,b) => a.fecha.localeCompare(b.fecha));
+    const anteriores = SEMINARIOS.filter(s => parseFecha(s.fecha) < hoy).sort((a,b) => b.fecha.localeCompare(a.fecha));
+
+    pintar("tabla-proximos", proximos, true, "Próximamente anunciaremos nuevos seminarios.");
+    pintar("tabla-anteriores", anteriores, false, "Todavía no hay seminarios anteriores.");
+    document.getElementById("anio").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
