@@ -130,3 +130,38 @@ footer {
   table.seminarios tr { border-bottom: 1px solid var(--borde); padding: .5rem 0; }
   table.seminarios td { border: none; padding: .2rem .5rem; background: none !important; }
 }
+
+/* ---------- Iconos ---------- */
+.ico { width: 1em; height: 1em; vertical-align: -0.15em; flex-shrink: 0; }
+h2 { display: flex; align-items: center; gap: .55rem; }
+h2 .ico { width: 1.4rem; height: 1.4rem; color: var(--azul-medio); }
+.subtitulo { margin: 1.5rem 0 .8rem; color: var(--azul); }
+nav.menu a { display: inline-flex; align-items: center; gap: .4rem; }
+
+.banner .container { position: relative; }
+.banner-iconos {
+  display: flex; gap: 1.2rem; margin-top: 1.6rem; opacity: .55;
+}
+.banner-iconos .ico { width: 2rem; height: 2rem; stroke-width: 1.6; }
+
+.formato div { display: flex; flex-direction: column; }
+.circulo {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 2.6rem; height: 2.6rem; border-radius: 50%;
+  background: var(--azul-medio); color: #fff; margin-bottom: .6rem;
+}
+.circulo .ico { width: 1.3rem; height: 1.3rem; }
+
+td.fecha small .ico, .afil .ico { margin-right: .3rem; opacity: .75; }
+.ponente { display: flex; align-items: center; gap: .35rem; }
+.ponente .ico { color: var(--azul-medio); }
+.enlaces a { display: inline-flex; align-items: center; gap: .35rem; }
+.boton { display: inline-flex; align-items: center; gap: .5rem; }
+.direccion { margin-top: .8rem; }
+.direccion .ico { margin-right: .35rem; }
+
+@media (max-width: 640px) {
+  .banner-iconos { gap: .9rem; }
+  .banner-iconos .ico { width: 1.5rem; height: 1.5rem; }
+  nav.menu ul { gap: .4rem 1rem; }
+}

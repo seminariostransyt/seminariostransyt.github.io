@@ -14,23 +14,26 @@
       <div class="eyebrow">TRANSyT · Universidad Politécnica de Madrid</div>
       <h1>Ciclo de Seminarios TRANSyT</h1>
       <p>Un espacio para presentar y discutir investigación en transporte, movilidad y territorio.</p>
+      <div class="banner-iconos">
+        <span data-i="tren"></span><span data-i="bus"></span><span data-i="bici"></span><span data-i="coche"></span><span data-i="andar"></span>
+      </div>
     </div>
   </header>
 
   <nav class="menu">
     <ul>
-      <li><a href="#sobre">Sobre el ciclo</a></li>
-      <li><a href="#proximos">Próximos seminarios</a></li>
-      <li><a href="#anteriores">Seminarios anteriores</a></li>
-      <li><a href="#proponer">Proponer un seminario</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#sobre"><span data-i="info"></span>Sobre el ciclo</a></li>
+      <li><a href="#proximos"><span data-i="calendario"></span>Próximos seminarios</a></li>
+      <li><a href="#anteriores"><span data-i="historial"></span>Seminarios anteriores</a></li>
+      <li><a href="#proponer"><span data-i="enviar"></span>Proponer un seminario</a></li>
+      <li><a href="#contacto"><span data-i="correo"></span>Contacto</a></li>
     </ul>
   </nav>
 
   <main class="container">
 
     <section id="sobre">
-      <h2>Sobre el ciclo</h2>
+      <h2><span data-i="info"></span>Sobre el ciclo</h2>
       <p>
         El <strong>Ciclo de Seminarios TRANSyT</strong> es el punto de encuentro para
         discutir sobre la investigación en transporte, movilidad y territorio. Combina
@@ -46,27 +49,27 @@
         apoye la formación de los investigadores jóvenes.
       </p>
 
-      <h3 style="margin:1.5rem 0 .8rem;color:var(--azul)">Formato</h3>
+      <h3 class="subtitulo">Formato</h3>
       <div class="formato">
-        <div><strong>Presentación</strong>30 minutos</div>
-        <div><strong>Debate</strong>20 minutos</div>
-        <div><strong>Lugar</strong>Biblioteca TRANSyT y online</div>
-        <div><strong>Horario</strong>Según el seminario (ver fechas abajo)</div>
+        <div><span class="circulo"><span data-i="presentacion"></span></span><strong>Presentación</strong>30 minutos</div>
+        <div><span class="circulo"><span data-i="debate"></span></span><strong>Debate</strong>20 minutos</div>
+        <div><span class="circulo"><span data-i="lugar"></span></span><strong>Lugar</strong>Biblioteca TRANSyT y online</div>
+        <div><span class="circulo"><span data-i="reloj"></span></span><strong>Horario</strong>Según el seminario (ver fechas abajo)</div>
       </div>
     </section>
 
     <section id="proximos">
-      <h2>Próximos seminarios</h2>
+      <h2><span data-i="calendario"></span>Próximos seminarios</h2>
       <div class="tabla-wrap"><table class="seminarios" id="tabla-proximos"></table></div>
     </section>
 
     <section id="anteriores">
-      <h2>Seminarios anteriores</h2>
+      <h2><span data-i="historial"></span>Seminarios anteriores</h2>
       <div class="tabla-wrap"><table class="seminarios" id="tabla-anteriores"></table></div>
     </section>
 
     <section id="proponer">
-      <h2>Contactar para próximos seminarios</h2>
+      <h2><span data-i="enviar"></span>Contactar para próximos seminarios</h2>
       <p>
         ¿Te gustaría presentar tu trabajo en el ciclo? Recibimos propuestas tanto de
         investigadores de otras universidades y centros como de investigadores y
@@ -83,20 +86,20 @@
         <li>Si presentarías de forma presencial u online</li>
       </ul>
       <p style="margin-top:1rem">
-        <a class="boton" href="mailto:daniela.castanoh@upm.es?subject=Propuesta%20de%20seminario%20TRANSyT">Proponer un seminario</a>
+        <a class="boton" href="mailto:daniela.castanoh@upm.es?subject=Propuesta%20de%20seminario%20TRANSyT"><span data-i="enviar"></span>Proponer un seminario</a>
       </p>
     </section>
 
     <section id="contacto">
-      <h2>Contacto</h2>
+      <h2><span data-i="correo"></span>Contacto</h2>
       <p>
         Si quieres recibir los avisos de los seminarios, escribe a
         <a href="mailto:daniela.castanoh@upm.es?subject=Alta%20en%20la%20lista%20de%20seminarios%20TRANSyT">daniela.castanoh@upm.es</a>
         para apuntarte a la lista de correo. Para cualquier otra consulta sobre el ciclo,
         puedes usar la misma dirección.
       </p>
-      <p class="afil" style="margin-top:.8rem">
-        Centro de Investigación del Transporte (TRANSyT) · ETSI Caminos, Canales y Puertos ·
+      <p class="afil direccion">
+        <span data-i="lugar"></span>Centro de Investigación del Transporte (TRANSyT) · ETSI Caminos, Canales y Puertos ·
         C/ Profesor Aranguren 3, 28040 Madrid
       </p>
     </section>
@@ -109,6 +112,7 @@
   </footer>
 
   <script src="seminarios.js"></script>
+  <script src="iconos.js"></script>
   <script>
     const MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
     const DIAS = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
@@ -152,16 +156,16 @@
 
       const enlaces = [];
       if (!anulado) {
-        if (futuro && (s.online || ENLACE_ONLINE)) enlaces.push(`<a href="${esc(s.online || ENLACE_ONLINE)}" target="_blank" rel="noopener">Unirse online</a>`);
-        if (futuro) enlaces.push(`<a href="${enlaceCalendario(s)}" target="_blank" rel="noopener">+ Calendario</a>`);
-        if (s.presentacion) enlaces.push(`<a href="${esc(s.presentacion)}" target="_blank" rel="noopener">Diapositivas</a>`);
-        if (s.video) enlaces.push(`<a href="${esc(s.video)}" target="_blank" rel="noopener">Vídeo</a>`);
+        if (futuro && (s.online || ENLACE_ONLINE)) enlaces.push(`<a href="${esc(s.online || ENLACE_ONLINE)}" target="_blank" rel="noopener">${ico("camara")}Unirse online</a>`);
+        if (futuro) enlaces.push(`<a href="${enlaceCalendario(s)}" target="_blank" rel="noopener">${ico("calendarioMas")}Calendario</a>`);
+        if (s.presentacion) enlaces.push(`<a href="${esc(s.presentacion)}" target="_blank" rel="noopener">${ico("diapositivas")}Diapositivas</a>`);
+        if (s.video) enlaces.push(`<a href="${esc(s.video)}" target="_blank" rel="noopener">${ico("video")}Vídeo</a>`);
       }
 
       return `<tr class="${anulado ? "anulado" : ""}">
-        <td class="fecha">${fechaLarga(d)}<small>${DIAS[d.getDay()]}, ${s.hora ? esc(s.hora) + " h" : "hora por confirmar"}</small></td>
+        <td class="fecha">${fechaLarga(d)}<small>${ico("reloj")}${DIAS[d.getDay()]}, ${s.hora ? esc(s.hora) + " h" : "hora por confirmar"}</small></td>
         <td>${titulo}</td>
-        <td>${ponente}${s.afiliacion ? `<div class="afil">${esc(s.afiliacion)}</div>` : ""}</td>
+        <td><div class="ponente">${ico("persona")}${ponente}</div>${s.afiliacion ? `<div class="afil">${ico("edificio")}${esc(s.afiliacion)}</div>` : ""}</td>
         <td class="enlaces">${enlaces.join("")}</td>
       </tr>`;
     }

@@ -24,3 +24,4 @@ presentacion: "presentaciones/2026-12-10-apellido.pdf",
 - `index.html` — textos de la página (descripción, formato, contacto)
 - `seminarios.js` — lista de seminarios, lugar por defecto y enlace de la llamada online
 - `style.css` — colores y diseño
+- `iconos.js` — iconos de la página
