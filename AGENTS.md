@@ -100,13 +100,17 @@ Reglas para los datos:
   el logo, el título y el **cartel del próximo seminario** (`#cartel`, panel oscuro con la
   flecha del logo). El cartel lo rellena `pintarCartel()` con el primer seminario próximo; si
   no hay ninguno muestra "Fecha por anunciar". El resto de la página es sobrio: menú blanco
-  fijo, ficha de formato junto a "Sobre el ciclo", tablas con líneas finas y franja azul claro
+  fijo, bloque "Cómo son nuestros seminarios", tablas con líneas finas y franja azul claro
   para las propuestas. Los pictogramas van en baldosas cuadradas (`.baldosa`). No añadas
   etiquetas en mayúsculas, degradados ni tarjetas decorativas.
 - **"Sobre el ciclo":** una introducción de una frase y dos bloques (`.tipo`) que explican los
   dos tipos de sesión: "Investigadores invitados" (icono `mundo`) e "Investigación en
-  desarrollo" (icono `matraz`). Son los únicos bloques con borde de la página. Mantén los
-  textos breves.
+  desarrollo" (icono `matraz`). Mantén los textos breves.
+- **"Cómo son nuestros seminarios"** (`.sesion`): línea de tiempo con tres tramos de ancho
+  proporcional (`grid-template-columns: 30fr 20fr 16fr`): 30 min de presentación científica,
+  20 min de debate abierto y café (intercambio informal); debajo, lugar y horario. Si cambia la
+  duración, cambia también las proporciones y `DURACION_MIN`. Los bloques `.tipo` y `.sesion`
+  son los únicos con borde de la página.
 - **Colores:** salen del logo. `--azul-medio` (#008BD2, azul TRANSyT) para baldosas y acentos;
   `--azul` (#005A8F) para cabecera, enlaces y botones; `--texto` (#1D1D1B, negro del
   logotipo) para texto y cartel; `--azul-claro` (#E9F3FA) para fondos suaves. No uses
