@@ -99,7 +99,7 @@ Comprueba que el enlace de SharePoint permite el acceso a quien quieras que lo v
 
 ## Datos actuales del ciclo
 
-- **Formato:** 30 minutos de presentación + 20 de debate
+- **Formato:** 30 minutos de presentación + 20 de debate, y al terminar un pequeño desayuno
 - **Lugar:** Biblioteca TRANSyT (ETSI Caminos, Canales y Puertos) y online
 - **Horario:** según el seminario
 - **Propuestas de seminarios:** daniela.castanoh@upm.es

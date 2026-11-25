@@ -21,6 +21,7 @@ const ICONOS = {
   copiar: '<rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>',
   externo: '<path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>',
   flecha: '<path d="M7 7h10v10"/><path d="M17 7 6 18"/>',
+  cafe: '<path d="M10 2v2M14 2v2M6 2v2"/><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/>',
   andar: '<circle cx="13" cy="4" r="2"/><path d="m9 20 3-6 3 3v5M7 12l2-4 4 1 2 3h3M10 8 8 14"/>',
 };
 
