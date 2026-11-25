@@ -11,26 +11,25 @@
 </head>
 <body>
 
-  <header class="banner">
+  <header class="hero">
     <div class="container">
-      <div class="banner-titulo">
-        <a href="https://www.transyt.upm.es/" target="_blank" rel="noopener" class="banner-logo">
-          <img src="img/transyt-circulo.png" alt="Logotipo de TRANSyT" width="96" height="96">
-        </a>
-        <div>
-          <div class="eyebrow">TRANSyT · Universidad Politécnica de Madrid</div>
+      <a href="https://www.transyt.upm.es/" target="_blank" rel="noopener" class="institucion">
+        <span class="banner-logo"><img src="img/transyt-circulo.png" alt="" width="64" height="64"></span>
+        <span>Centro de Investigación del Transporte<br>Universidad Politécnica de Madrid</span>
+      </a>
+
+      <div class="hero-cuerpo">
+        <div class="hero-texto">
           <h1>Ciclo de Seminarios TRANSyT</h1>
+          <p>Un espacio para presentar y discutir investigación en transporte, movilidad y territorio.</p>
         </div>
-      </div>
-      <p>Un espacio para presentar y discutir investigación en transporte, movilidad y territorio.</p>
-      <div class="banner-iconos">
-        <span data-i="tren"></span><span data-i="bus"></span><span data-i="bici"></span><span data-i="coche"></span><span data-i="andar"></span>
+        <article class="cartel" id="cartel" aria-label="Próximo seminario"></article>
       </div>
     </div>
   </header>
 
-  <nav class="menu">
-    <ul>
+  <nav class="menu" aria-label="Secciones">
+    <ul class="container">
       <li><a href="#sobre"><span data-i="info"></span>Sobre el ciclo</a></li>
       <li><a href="#proximos"><span data-i="calendario"></span>Próximos seminarios</a></li>
       <li><a href="#anteriores"><span data-i="historial"></span>Seminarios anteriores</a></li>
@@ -40,30 +39,34 @@
 
   <main class="container">
 
-    <section id="sobre">
-      <h2><span data-i="info"></span>Sobre el ciclo</h2>
-      <p>
-        El <strong>Ciclo de Seminarios TRANSyT</strong> es el punto de encuentro para
-        discutir sobre la investigación en transporte, movilidad y territorio. Combina
-        dos tipos de sesiones: <strong>seminarios de ponentes invitados</strong>, en los
-        que investigadores de otras universidades y centros presentan sus trabajos
-        recientes, y <strong>sesiones de trabajo en curso</strong>, en las que
-        investigadores y doctorandos de TRANSyT exponen proyectos en desarrollo para
-        recibir comentarios en un ambiente abierto y constructivo.
-      </p>
-      <p>
-        El objetivo es crear un espacio de intercambio que fortalezca la calidad de la
-        investigación, conecte al centro con la comunidad académica y profesional, y
-        apoye la formación de los investigadores jóvenes.
-      </p>
-
-      <h3 class="subtitulo">Formato</h3>
-      <div class="formato">
-        <div><span class="circulo"><span data-i="presentacion"></span></span><strong>Presentación</strong>30 minutos</div>
-        <div><span class="circulo"><span data-i="debate"></span></span><strong>Debate</strong>20 minutos</div>
-        <div><span class="circulo"><span data-i="lugar"></span></span><strong>Lugar</strong>Biblioteca TRANSyT y online</div>
-        <div><span class="circulo"><span data-i="reloj"></span></span><strong>Horario</strong>Según el seminario (ver fechas abajo)</div>
+    <section id="sobre" class="sobre">
+      <div class="sobre-texto">
+        <h2><span data-i="info"></span>Sobre el ciclo</h2>
+        <p>
+          El <strong>Ciclo de Seminarios TRANSyT</strong> es el punto de encuentro para
+          discutir sobre la investigación en transporte, movilidad y territorio. Combina
+          dos tipos de sesiones: <strong>seminarios de ponentes invitados</strong>, en los
+          que investigadores de otras universidades y centros presentan sus trabajos
+          recientes, y <strong>sesiones de trabajo en curso</strong>, en las que
+          investigadores y doctorandos de TRANSyT exponen proyectos en desarrollo para
+          recibir comentarios en un ambiente abierto y constructivo.
+        </p>
+        <p>
+          El objetivo es crear un espacio de intercambio que fortalezca la calidad de la
+          investigación, conecte al centro con la comunidad académica y profesional, y
+          apoye la formación de los investigadores jóvenes.
+        </p>
       </div>
+
+      <aside class="formato" aria-labelledby="titulo-formato">
+        <h3 id="titulo-formato">Formato</h3>
+        <dl>
+          <div><dt><span class="baldosa"><span data-i="presentacion"></span></span>Presentación</dt><dd>30 minutos</dd></div>
+          <div><dt><span class="baldosa"><span data-i="debate"></span></span>Debate</dt><dd>20 minutos</dd></div>
+          <div><dt><span class="baldosa"><span data-i="lugar"></span></span>Lugar</dt><dd>Biblioteca TRANSyT y online</dd></div>
+          <div><dt><span class="baldosa"><span data-i="reloj"></span></span>Horario</dt><dd>Según el seminario</dd></div>
+        </dl>
+      </aside>
     </section>
 
     <section id="proximos">
@@ -76,56 +79,61 @@
       <div class="tabla-wrap"><table class="seminarios" id="tabla-anteriores"></table></div>
     </section>
 
-    <section id="proponer">
-      <h2><span data-i="enviar"></span>Contactar para próximos seminarios</h2>
-      <p>
-        ¿Te gustaría presentar tu trabajo en el ciclo? Recibimos propuestas tanto de
-        investigadores de otras universidades y centros como de investigadores y
-        doctorandos de TRANSyT que quieran compartir un proyecto en desarrollo.
-      </p>
-      <p>
-        Escribe a <strong>daniela.castanoh@upm.es</strong> indicando:
-      </p>
-      <ul style="margin:.6rem 0 0 1.5rem">
-        <li>Título provisional de la presentación</li>
-        <li>Un breve resumen</li>
-        <li>Fechas en las que tendrías disponibilidad</li>
-        <li>Si presentarías de forma presencial u online</li>
-      </ul>
-      <p style="margin-top:1rem">
+  </main>
+
+  <section id="proponer" class="franja">
+    <div class="container proponer">
+      <div>
+        <h2><span data-i="enviar"></span>Contactar para próximos seminarios</h2>
+        <p>
+          ¿Te gustaría presentar tu trabajo en el ciclo? Recibimos propuestas tanto de
+          investigadores de otras universidades y centros como de investigadores y
+          doctorandos de TRANSyT que quieran compartir un proyecto en desarrollo.
+        </p>
+        <p>Escribe a <strong>daniela.castanoh@upm.es</strong> indicando:</p>
+        <ul class="lista-propuesta">
+          <li>Título provisional de la presentación</li>
+          <li>Un breve resumen</li>
+          <li>Fechas en las que tendrías disponibilidad</li>
+          <li>Si presentarías de forma presencial u online</li>
+        </ul>
+      </div>
+
+      <div class="proponer-accion">
         <button type="button" class="boton" id="btn-proponer" aria-expanded="false" aria-controls="panel-proponer">
           <span data-i="enviar"></span>Proponer un seminario
         </button>
-      </p>
 
-      <div class="panel-correo" id="panel-proponer" hidden>
-        <p class="panel-titulo">Elige cómo quieres escribirnos. El mensaje se abrirá ya preparado con el destinatario y el asunto.</p>
+        <div class="panel-correo" id="panel-proponer" hidden>
+          <p class="panel-titulo">Elige cómo quieres escribirnos. El mensaje se abrirá ya preparado con el destinatario y el asunto.</p>
 
-        <div class="correo-copiar">
-          <span data-i="correo"></span>
-          <span class="correo-dir" id="correo-dir"></span>
-          <button type="button" class="mini" id="btn-copiar"><span data-i="copiar"></span><span class="txt">Copiar</span></button>
+          <div class="correo-copiar">
+            <span data-i="correo"></span>
+            <span class="correo-dir" id="correo-dir"></span>
+            <button type="button" class="mini" id="btn-copiar"><span data-i="copiar"></span><span class="txt">Copiar</span></button>
+          </div>
+
+          <div class="opciones-correo">
+            <a id="op-mailto"><span data-i="correo"></span>Outlook (escritorio)</a>
+            <a id="op-upm" target="_blank" rel="noopener"><span data-i="externo"></span>Webmail UPM</a>
+          </div>
+          <p class="nota-webmail" id="nota-webmail" hidden>
+            Hemos copiado la dirección de correo. Si al iniciar sesión en el Webmail UPM no
+            aparece el destinatario, crea un mensaje nuevo y pégala (Ctrl+V).
+          </p>
         </div>
-
-        <div class="opciones-correo">
-          <a id="op-mailto"><span data-i="correo"></span>Outlook (escritorio)</a>
-          <a id="op-upm" target="_blank" rel="noopener"><span data-i="externo"></span>Webmail UPM</a>
-        </div>
-        <p class="nota-webmail" id="nota-webmail" hidden>
-          Hemos copiado la dirección de correo. Si al iniciar sesión en el Webmail UPM no
-          aparece el destinatario, crea un mensaje nuevo y pégala (Ctrl+V).
-        </p>
       </div>
-    </section>
-
-  </main>
+    </div>
+  </section>
 
   <footer>
-    <a href="https://www.transyt.upm.es/" target="_blank" rel="noopener" class="footer-logo">
-      <img src="img/transyt-logo.png" alt="TRANSyT · Centro de Investigación del Transporte" width="260">
-    </a>
-    © <span id="anio"></span> TRANSyT · Universidad Politécnica de Madrid ·
-    <a href="https://www.transyt.upm.es/" target="_blank" rel="noopener">transyt.upm.es</a>
+    <div class="container pie">
+      <a href="https://www.transyt.upm.es/" target="_blank" rel="noopener" class="footer-logo">
+        <img src="img/transyt-logo.png" alt="TRANSyT, Centro de Investigación del Transporte" width="220">
+      </a>
+      <p>© <span id="anio"></span> TRANSyT, Universidad Politécnica de Madrid<br>
+        <a href="https://www.transyt.upm.es/" target="_blank" rel="noopener">transyt.upm.es</a></p>
+    </div>
   </footer>
 
   <script src="seminarios.js"></script>
@@ -137,6 +145,7 @@
     const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
     const parseFecha = f => { const [a,m,d] = f.split("-").map(Number); return new Date(a, m-1, d); };
     const fechaLarga = d => `${d.getDate()} de ${MESES[d.getMonth()]} de ${d.getFullYear()}`;
+    const mayus = t => t.charAt(0).toUpperCase() + t.slice(1);
 
     function enlaceCalendario(s) {
       const dia = s.fecha.replace(/-/g, "");
@@ -197,6 +206,32 @@
     const proximos = SEMINARIOS.filter(s => parseFecha(s.fecha) >= hoy).sort((a,b) => a.fecha.localeCompare(b.fecha));
     const anteriores = SEMINARIOS.filter(s => parseFecha(s.fecha) < hoy).sort((a,b) => b.fecha.localeCompare(a.fecha));
 
+    function pintarCartel(s) {
+      const c = document.getElementById("cartel");
+      const cab = `<div class="cartel-cab"><span class="baldosa grande">${ico("flecha")}</span>Próximo seminario</div>`;
+      if (!s) {
+        c.innerHTML = `${cab}
+          <p class="cartel-fecha">Fecha por anunciar</p>
+          <p class="cartel-titulo">Estamos preparando el siguiente seminario.</p>
+          <div class="cartel-acciones"><a href="#proponer">Proponer un seminario</a></div>`;
+        return;
+      }
+      const d = parseFecha(s.fecha);
+      const online = s.online || ENLACE_ONLINE;
+      const anulado = s.estado === "aplazado" || s.estado === "cancelado";
+      const ponente = s.web ? `<a href="${esc(s.web)}" target="_blank" rel="noopener">${esc(s.ponente)}</a>` : esc(s.ponente);
+      c.innerHTML = `${cab}
+        <p class="cartel-fecha">${mayus(DIAS[d.getDay()])} ${d.getDate()} de ${MESES[d.getMonth()]}, ${s.hora ? esc(s.hora) + " h" : "hora por confirmar"}</p>
+        <p class="cartel-titulo">${esc(s.titulo)}${anulado ? ` <span class="etiqueta">${esc(s.estado)}</span>` : ""}</p>
+        <p class="cartel-ponente">${ponente}${s.afiliacion ? `, ${esc(s.afiliacion)}` : ""}</p>
+        <p class="cartel-lugar">${ico("lugar")}${esc(s.lugar || LUGAR_POR_DEFECTO)}</p>
+        ${anulado ? "" : `<div class="cartel-acciones">
+          <a href="${enlaceCalendario(s)}" target="_blank" rel="noopener">${ico("calendarioMas")}Añadir al calendario</a>
+          ${online ? `<a href="${esc(online)}" target="_blank" rel="noopener">${ico("camara")}Unirse online</a>` : ""}
+        </div>`}`;
+    }
+
+    pintarCartel(proximos[0]);
     pintar("tabla-proximos", proximos, true, "Próximamente anunciaremos nuevos seminarios.");
     pintar("tabla-anteriores", anteriores, false, "Todavía no hay seminarios anteriores.");
     document.getElementById("anio").textContent = new Date().getFullYear();

@@ -19,7 +19,7 @@
 // =====================================================================
 
 const DURACION_MIN = 50;   // 30 min de presentación + 20 de debate
-const LUGAR_POR_DEFECTO = "Biblioteca TRANSyT · ETSI Caminos, Canales y Puertos (UPM)";
+const LUGAR_POR_DEFECTO = "Biblioteca TRANSyT, ETSI Caminos, Canales y Puertos (UPM)";
 
 // Enlace de la llamada online. Ponlo aquí una vez y saldrá en todos los
 // próximos seminarios. Mientras esté vacío, el botón "Unirse online" no aparece.
