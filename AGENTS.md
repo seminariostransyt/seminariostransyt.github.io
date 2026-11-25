@@ -93,8 +93,8 @@ Reglas para los datos:
 - **Panel "Proponer un seminario":** muestra el correo con botón Copiar y solo dos opciones,
   **Outlook (escritorio)** (`mailto:`) y **Webmail UPM**
   (`https://www.upm.es/webmail_personal/`, Roundcube). No añadas Gmail ni Outlook web.
-- **Formato:** 30 min de presentación + 20 de debate (`DURACION_MIN = 50`) y, al terminar, un
-  pequeño desayuno (no cuenta en la duración del calendario). Lugar: Biblioteca TRANSyT y
+- **Formato:** 30 min de presentación + 20 de debate (`DURACION_MIN = 50`) y, al terminar, un café
+  (no cuenta en la duración del calendario). Lugar: Biblioteca TRANSyT y
   online. Horario variable según el seminario.
 - **Diseño (concepto "señalética de transporte"):** cabecera azul lisa (sin degradados) con
   el logo, el título y el **cartel del próximo seminario** (`#cartel`, panel oscuro con la
