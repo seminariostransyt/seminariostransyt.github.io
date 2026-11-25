@@ -196,3 +196,5 @@ button.mini.ok { background: #e6f4ea; color: #1e7b34; border-color: #b7dfc2; }
   padding: .45rem .85rem; font-size: .92rem; font-weight: 600;
 }
 .opciones-correo a:hover { border-color: var(--azul-medio); text-decoration: none; }
+.nota-webmail { margin-top: .8rem; font-size: .88rem; color: var(--gris); }
+.nota-webmail[hidden] { display: none; }
