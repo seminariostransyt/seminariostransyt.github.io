@@ -103,6 +103,10 @@ Reglas para los datos:
   fijo, ficha de formato junto a "Sobre el ciclo", tablas con líneas finas y franja azul claro
   para las propuestas. Los pictogramas van en baldosas cuadradas (`.baldosa`). No añadas
   etiquetas en mayúsculas, degradados ni tarjetas decorativas.
+- **"Sobre el ciclo":** una introducción de una frase y dos bloques (`.tipo`) que explican los
+  dos tipos de sesión: "Investigadores invitados" (icono `mundo`) e "Investigación en
+  desarrollo" (icono `matraz`). Son los únicos bloques con borde de la página. Mantén los
+  textos breves.
 - **Colores:** salen del logo. `--azul-medio` (#008BD2, azul TRANSyT) para baldosas y acentos;
   `--azul` (#005A8F) para cabecera, enlaces y botones; `--texto` (#1D1D1B, negro del
   logotipo) para texto y cartel; `--azul-claro` (#E9F3FA) para fondos suaves. No uses

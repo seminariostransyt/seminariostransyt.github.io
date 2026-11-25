@@ -267,3 +267,15 @@ footer { padding: 2.5rem 0 3rem; }
   .pie { flex-direction: column; align-items: flex-start; }
   .pie p { text-align: left; }
 }
+
+/* ---------- Sobre el ciclo: los dos tipos de sesión ---------- */
+.tipos { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.3rem; }
+.tipo {
+  border: 1px solid var(--borde); border-radius: 10px;
+  padding: 1.2rem 1.3rem 1.3rem;
+}
+.tipo .baldosa { width: 2.4rem; height: 2.4rem; }
+.tipo .baldosa .ico { width: 1.35rem; height: 1.35rem; }
+.tipo h3 { font-size: 1.08rem; font-weight: 700; margin: .9rem 0 .35rem; }
+.tipo p { color: var(--gris); font-size: 1rem; line-height: 1.55; }
+@media (max-width: 640px) { .tipos { grid-template-columns: 1fr; } }
