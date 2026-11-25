@@ -27,36 +27,10 @@ const LUGAR_POR_DEFECTO = "Biblioteca TRANSyT, ETSI Caminos, Canales y Puertos (
 const ENLACE_ONLINE = "";
 
 const SEMINARIOS = [
-  // ---- EJEMPLOS: sustitúyelos por los seminarios reales ----
   {
-    fecha: "2026-12-10",
-    titulo: "Título de ejemplo de un seminario próximo",
-    ponente: "Nombre Apellido",
-    afiliacion: "Universidad de ejemplo",
-    web: "",
-    orcid: "0000-0002-1825-0097",   // ORCID de ejemplo oficial (Josiah Carberry)
-    hora: "12:00",
-    resumen: "Breve resumen de la charla. Aparece desplegable al pulsar sobre el título.",
-  },
-  {
-    fecha: "2027-01-21",
-    titulo: "Otro seminario próximo de ejemplo",
-    ponente: "Nombre Apellido",
-    afiliacion: "TRANSyT-UPM",
-  },
-  {
-    fecha: "2026-10-15",
-    titulo: "Seminario pasado de ejemplo",
-    ponente: "Nombre Apellido",
-    hora: "16:00",
-    afiliacion: "Centro de investigación de ejemplo",
-    presentacion: "#",
-  },
-  {
-    fecha: "2026-09-24",
-    titulo: "Seminario aplazado de ejemplo",
-    ponente: "Nombre Apellido",
-    afiliacion: "TRANSyT-UPM",
-    estado: "aplazado",
+    fecha: "2027-01-26",
+    hora: "11:00",
+    titulo: "Pago biométrico en transporte público: el papel de los beneficios percibidos, la madurez tecnológica y las preocupaciones en materia de privacidad",
+    ponente: "Juan Sebastian Guzman",
   },
 ];
