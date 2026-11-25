@@ -28,7 +28,7 @@ const ENLACE_ONLINE = "";
 
 const SEMINARIOS = [
   {
-    fecha: "2027-01-26",
+    fecha: "2027-02-02",
     hora: "11:00",
     titulo: "Pago biométrico en transporte público: el papel de los beneficios percibidos, la madurez tecnológica y las preocupaciones en materia de privacidad",
     ponente: "Juan Sebastian Guzman",
