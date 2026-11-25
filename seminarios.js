@@ -14,7 +14,7 @@
 //    resumen      abstract breve              (opcional; se despliega al pulsar)
 //    lugar        sala / online               (opcional; si falta se usa LUGAR_POR_DEFECTO)
 //    online       enlace de la llamada        (opcional; si falta se usa ENLACE_ONLINE)
-//    presentacion ruta o enlace al PDF        (opcional; p. ej. "presentaciones/2026-12-10.pdf")
+//    presentacion enlace de SharePoint a las diapositivas (opcional)
 //    estado       "aplazado" o "cancelado"    (opcional)
 // =====================================================================
 

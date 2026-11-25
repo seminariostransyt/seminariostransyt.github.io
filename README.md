@@ -45,7 +45,7 @@ Ejemplo:
 | `resumen`      | No | Se despliega al pulsar el título |
 | `lugar`        | No | Solo si es distinto de la Biblioteca TRANSyT |
 | `online`       | No | Solo si ese seminario usa un enlace distinto del general |
-| `presentacion` | No | Enlace o ruta al PDF de las diapositivas |
+| `presentacion` | No | Enlace de SharePoint a las diapositivas |
 | `estado`       | No | `"aplazado"` o `"cancelado"` (el título aparece tachado) |
 
 ## Enlace de la llamada online
@@ -59,13 +59,17 @@ const ENLACE_ONLINE = "";
 Pon ahí el enlace de la llamada una sola vez y el botón **Unirse online** aparecerá en
 todos los próximos seminarios. Mientras esté vacío, el botón no se muestra.
 
-## Subir las diapositivas
+## Diapositivas
 
-Sube el PDF a la carpeta `presentaciones/` (**Add file → Upload files**) y añade al seminario:
+Las presentaciones se guardan en SharePoint. Copia el enlace para compartir del archivo
+y añádelo al seminario:
 
 ```js
-presentacion: "presentaciones/2027-02-11-apellido.pdf",
+presentacion: "https://...sharepoint.com/...",
 ```
+
+En **Seminarios anteriores** aparecerá el botón **Diapositivas** con ese enlace.
+Comprueba que el enlace de SharePoint permite el acceso a quien quieras que lo vea.
 
 ## Qué hay en cada archivo
 
@@ -75,7 +79,6 @@ presentacion: "presentaciones/2027-02-11-apellido.pdf",
 | `seminarios.js`   | Lista de seminarios, lugar por defecto y enlace de la llamada online |
 | `style.css`       | Colores y diseño |
 | `iconos.js`       | Iconos de la página (trazos basados en [Lucide](https://lucide.dev), licencia ISC) |
-| `presentaciones/` | PDFs de las diapositivas |
 
 ## Datos actuales del ciclo
 
