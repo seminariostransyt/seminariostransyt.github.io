@@ -33,5 +33,6 @@ const SEMINARIOS = [
     titulo: "Pago biométrico en transporte público: el papel de los beneficios percibidos, la madurez tecnológica y las preocupaciones en materia de privacidad",
     ponente: "Juan Sebastian Guzman",
     orcid: "0009-0001-4530-5364",
+    afiliacion: "TRANSyT-UPM",
   },
 ];
