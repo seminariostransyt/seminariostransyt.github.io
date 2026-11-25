@@ -78,6 +78,7 @@ Comprueba que el enlace de SharePoint permite el acceso a quien quieras que lo v
 | `index.html`      | Textos de la página: descripción del ciclo, formato y propuestas de seminarios |
 | `seminarios.js`   | Lista de seminarios, lugar por defecto y enlace de la llamada online |
 | `style.css`       | Colores y diseño |
+| `AGENTS.md`       | Instrucciones para asistentes de IA (Claude, ChatGPT, Copilot, Gemini…) |
 | `iconos.js`       | Iconos de la página (trazos basados en [Lucide](https://lucide.dev), licencia ISC) |
 
 ## Datos actuales del ciclo
