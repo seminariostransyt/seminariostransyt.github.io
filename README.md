@@ -72,7 +72,7 @@ presentacion: "presentaciones/2027-02-11-apellido.pdf",
 
 | Archivo | Contenido |
 |---------|-----------|
-| `index.html`      | Textos de la página: descripción del ciclo, formato, propuestas y contacto |
+| `index.html`      | Textos de la página: descripción del ciclo, formato y propuestas de seminarios |
 | `seminarios.js`   | Lista de seminarios, lugar por defecto y enlace de la llamada online |
 | `style.css`       | Colores y diseño |
 | `iconos.js`       | Iconos de la página (trazos basados en [Lucide](https://lucide.dev), licencia ISC) |
@@ -83,7 +83,7 @@ presentacion: "presentaciones/2027-02-11-apellido.pdf",
 - **Formato:** 30 minutos de presentación + 20 de debate
 - **Lugar:** Biblioteca TRANSyT (ETSI Caminos, Canales y Puertos) y online
 - **Horario:** según el seminario
-- **Contacto y propuestas:** daniela.castanoh@upm.es
+- **Propuestas de seminarios:** daniela.castanoh@upm.es
 
 Para cambiar estos textos, edita `index.html`. El lugar que aparece en el calendario se
 cambia en `LUGAR_POR_DEFECTO` y la duración en `DURACION_MIN`, ambos en `seminarios.js`.
