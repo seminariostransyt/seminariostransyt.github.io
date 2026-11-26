@@ -116,7 +116,7 @@ Comprueba que el enlace de SharePoint permite el acceso a quien quieras que lo v
 - **Formato:** 30 minutos de presentación + 20 de debate, y al terminar un café
 - **Lugar:** Biblioteca TRANSyT (ETSI Caminos, Canales y Puertos) y online
 - **Horario:** según el seminario
-- **Propuestas de seminarios:** daniela.castanoh@upm.es
+- **Propuestas de seminarios:** daniela.castanoh@upm.es y dp.vnaranjo@upm.es
 
 Para cambiar estos textos, edita `index.html`. El lugar que aparece en el calendario se
 cambia en `LUGAR_POR_DEFECTO` y la duración en `DURACION_MIN`, ambos en `seminarios.js`.

@@ -112,7 +112,7 @@
           investigadores de otras universidades y centros como de investigadores y
           doctorandos de TRANSyT que quieran compartir un proyecto en desarrollo.
         </p>
-        <p>Escribe a <strong>daniela.castanoh@upm.es</strong> indicando:</p>
+        <p>Escribe a <strong>daniela.castanoh@upm.es</strong> y <strong>dp.vnaranjo@upm.es</strong> indicando:</p>
         <ul class="lista-propuesta">
           <li>Título provisional de la presentación</li>
           <li>Un breve resumen</li>
@@ -127,21 +127,17 @@
         </button>
 
         <div class="panel-correo" id="panel-proponer" hidden>
-          <p class="panel-titulo">Elige cómo quieres escribirnos. El mensaje se abrirá ya preparado con el destinatario y el asunto.</p>
+          <p class="panel-titulo">Elige cómo quieres escribirnos. El mensaje se abrirá ya preparado con los destinatarios y el asunto.</p>
 
-          <div class="correo-copiar">
-            <span data-i="correo"></span>
-            <span class="correo-dir" id="correo-dir"></span>
-            <button type="button" class="mini" id="btn-copiar"><span data-i="copiar"></span><span class="txt">Copiar</span></button>
-          </div>
+          <div class="correos" id="correos"></div>
 
           <div class="opciones-correo">
             <a id="op-mailto"><span data-i="correo"></span>Outlook o app de correo</a>
             <a id="op-upm" target="_blank" rel="noopener"><span data-i="externo"></span>Webmail UPM</a>
           </div>
           <p class="nota-webmail" id="nota-webmail" hidden>
-            Hemos copiado la dirección de correo. Si al iniciar sesión en el Webmail UPM no
-            aparece el destinatario, crea un mensaje nuevo y pégala (Ctrl+V).
+            Hemos copiado las direcciones de correo. Si al iniciar sesión en el Webmail UPM no
+            aparecen los destinatarios, crea un mensaje nuevo y pégalas (Ctrl+V).
           </p>
         </div>
       </div>
@@ -314,19 +310,42 @@
 
     // ---- Proponer un seminario: panel con opciones de correo ----
     (function () {
-      const CORREO = "daniela.castanoh@upm.es";
+      // Destinatarios de las propuestas. Para añadir o quitar uno, cambia esta lista.
+      const CORREOS = ["daniela.castanoh@upm.es", "dp.vnaranjo@upm.es"];
       const ASUNTO = "Propuesta de seminario TRANSyT";
       const CUERPO = "Hola,\n\nMe gustaría proponer un seminario para el Ciclo de Seminarios TRANSyT.\n\n" +
         "Título provisional: \nBreve resumen: \nFechas con disponibilidad: \nModalidad (presencial / online): \n\nUn saludo,\n";
       const enc = encodeURIComponent;
+      const PARA = CORREOS.join(",");
 
-      document.getElementById("correo-dir").textContent = CORREO;
+      async function copiarTexto(texto) {
+        try { await navigator.clipboard.writeText(texto); }
+        catch (e) {
+          const t = document.createElement("textarea");
+          t.value = texto; document.body.appendChild(t); t.select();
+          try { document.execCommand("copy"); } catch (_) {}
+          t.remove();
+        }
+      }
+
+      const lista = document.getElementById("correos");
+      lista.innerHTML = CORREOS.map(c => `<div class="correo-copiar">
+          ${ico("correo")}<span class="correo-dir">${esc(c)}</span>
+          <button type="button" class="mini" data-correo="${esc(c)}" aria-label="Copiar ${esc(c)}">${ico("copiar")}<span class="txt">Copiar</span></button>
+        </div>`).join("");
+      lista.querySelectorAll("button[data-correo]").forEach(b => b.addEventListener("click", async () => {
+        await copiarTexto(b.dataset.correo);
+        const txt = b.querySelector(".txt");
+        txt.textContent = "¡Copiado!"; b.classList.add("ok");
+        setTimeout(() => { txt.textContent = "Copiar"; b.classList.remove("ok"); }, 2000);
+      }));
+
       document.getElementById("op-mailto").href =
-        `mailto:${CORREO}?subject=${enc(ASUNTO)}&body=${enc(CUERPO)}`;
+        `mailto:${PARA}?subject=${enc(ASUNTO)}&body=${enc(CUERPO)}`;
       const upm = document.getElementById("op-upm");
-      upm.href = `https://www.upm.es/webmail_personal/?_task=mail&_action=compose&_to=${enc(CORREO)}&_subject=${enc(ASUNTO)}&_body=${enc(CUERPO)}`;
+      upm.href = `https://www.upm.es/webmail_personal/?_task=mail&_action=compose&_to=${enc(CORREOS.join(", "))}&_subject=${enc(ASUNTO)}&_body=${enc(CUERPO)}`;
       upm.addEventListener("click", () => {
-        if (navigator.clipboard) navigator.clipboard.writeText(CORREO).catch(() => {});
+        copiarTexto(CORREOS.join(", "));
         document.getElementById("nota-webmail").hidden = false;
       });
 
@@ -336,22 +355,6 @@
         const abrir = panel.hidden;
         panel.hidden = !abrir;
         btn.setAttribute("aria-expanded", String(abrir));
-      });
-
-      const copiar = document.getElementById("btn-copiar");
-      copiar.addEventListener("click", async () => {
-        try {
-          await navigator.clipboard.writeText(CORREO);
-        } catch (e) {
-          const t = document.createElement("textarea");
-          t.value = CORREO; document.body.appendChild(t); t.select();
-          try { document.execCommand("copy"); } catch (_) {}
-          t.remove();
-        }
-        const txt = copiar.querySelector(".txt");
-        txt.textContent = "¡Copiado!";
-        copiar.classList.add("ok");
-        setTimeout(() => { txt.textContent = "Copiar"; copiar.classList.remove("ok"); }, 2000);
       });
     })();
   </script>

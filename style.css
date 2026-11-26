@@ -230,10 +230,11 @@ tr.anulado .titulo { text-decoration: line-through; color: var(--gris); }
 }
 .panel-correo[hidden] { display: none; }
 .panel-titulo { font-size: .93rem; color: var(--gris); margin-bottom: .8rem; }
+.correos { display: flex; flex-direction: column; gap: .5rem; margin-bottom: .9rem; }
 .correo-copiar {
   display: flex; align-items: center; gap: .55rem; flex-wrap: wrap;
   border: 1px solid var(--borde); border-radius: var(--radio);
-  padding: .55rem .75rem; margin-bottom: .9rem;
+  padding: .55rem .75rem;
 }
 .correo-copiar > .ico { color: var(--azul-medio); }
 .correo-dir { font-weight: 600; flex: 1; word-break: break-all; }

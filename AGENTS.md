@@ -104,9 +104,11 @@ Reglas para los datos:
 - **Dos tablas:** "Próximos seminarios" y "Seminarios anteriores". Mantenlas.
 - **Sin sección "Contacto":** se eliminó. El único contacto es la sección
   "Contactar para próximos seminarios" (`#proponer`).
-- **Correo de contacto:** `daniela.castanoh@upm.es`. Está en `index.html`: en el texto de
-  `#proponer` y en la constante `CORREO` del script del panel.
-- **Panel "Proponer un seminario":** muestra el correo con botón Copiar y solo dos opciones,
+- **Correos de contacto:** `daniela.castanoh@upm.es` y `dp.vnaranjo@upm.es`. Están en
+  `index.html`: en el texto de `#proponer` y en la lista `CORREOS` del script del panel. Los
+  mensajes preparados van a los dos a la vez y cada dirección tiene su botón Copiar. Para
+  añadir o quitar un destinatario, cambia el texto y la lista `CORREOS`.
+- **Panel "Proponer un seminario":** muestra los correos con botón Copiar y solo dos opciones,
   **Outlook o app de correo** (`mailto:`: abre Outlook en el ordenador y la app de correo en
   el móvil) y **Webmail UPM**
   (`https://www.upm.es/webmail_personal/`, Roundcube). No añadas Gmail ni Outlook web.
