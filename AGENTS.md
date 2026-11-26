@@ -107,7 +107,8 @@ Reglas para los datos:
 - **Correo de contacto:** `daniela.castanoh@upm.es`. Está en `index.html`: en el texto de
   `#proponer` y en la constante `CORREO` del script del panel.
 - **Panel "Proponer un seminario":** muestra el correo con botón Copiar y solo dos opciones,
-  **Outlook (escritorio)** (`mailto:`) y **Webmail UPM**
+  **Outlook o app de correo** (`mailto:`: abre Outlook en el ordenador y la app de correo en
+  el móvil) y **Webmail UPM**
   (`https://www.upm.es/webmail_personal/`, Roundcube). No añadas Gmail ni Outlook web.
 - **Formato:** 30 min de presentación + 20 de debate (`DURACION_MIN = 50`) y, al terminar, un café
   (no cuenta en la duración del calendario). Lugar: Biblioteca TRANSyT y
